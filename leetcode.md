@@ -1,4 +1,4 @@
-##BFS:
+## BFS:
 
 Time: O(V + E), where V is the number of vertices and E is the number of edges.
 
@@ -24,10 +24,13 @@ var levelOrder = function(root) {
 };
 ```
 
-DFS:                                                                                              
+## DFS:                   
+
 Time: O(V + E), where V is the number of vertices and E is the number of edges.
+
 Space: O(V)
 
+```javascript
 let res = [];
 function dfs(node) {
  if (!node) return false;
@@ -37,9 +40,10 @@ function dfs(node) {
 }
 dfs(root);
 return res;
- 
-DFS:  Check if valid BST                                                                
+```
 
+DFS:  Check if valid BST                                                                
+```javascript
 var isValidBST = function(root) {
   function dfs(node, lower, upper) {
     if (!node) return true;
@@ -55,3 +59,4 @@ var isValidBST = function(root) {
   let res = dfs(root, -Infinity, Infinity);
   return res;
 };
+```
