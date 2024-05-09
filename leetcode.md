@@ -244,9 +244,9 @@ Dijkstra's algorithm is generally faster for graphs with non-negative weights.
 Bellman-Ford may be slower but is more versatile in handling negative weights.
 
 ## Backtrack (Permutations)                  
-Time: O(n!) 
+**Time:** O(n!) 
 
-Space: O(n)
+**Space:** O(n)
 ```javascript
 //Given an array nums of distinct integers, return all the possible permutations. You can return the answer in any order.
  
@@ -276,9 +276,9 @@ var permute = function(nums) {
 };
 ```
 ## Backtrack (Combinations)                  
-Time: O(n!) 
+**Time:** O(n!) 
 
-Space: O(n)
+**Space:** O(n)
 ```javascript
 // Generate all possible combos.
 const arr = ["cha", "r", "act", "ers"];
@@ -316,9 +316,9 @@ function generateCombinations(arr) {
 ```
 
 ## Topology Sort                
-**Time Complexity:** O(V + E)
+**Time:** O(V + E)
 
-**Space Complexity:** O(V + E)
+**Space:** O(V + E)
 
 ```javascript
 Input: numCourses = 2, prerequisites = [[1,0],[0,1]]
@@ -356,4 +356,152 @@ var canFinish = function(numCourses, prerequisites) {
  
   return true;
 };
+```
+## Generate subarray               
+
+```javascript
+Input: arr = [1, 2, 3, 4]
+Output: 
+[
+  [ 1 ],       [ 1, 2 ],
+  [ 1, 2, 3 ], [ 1, 2, 3, 4 ],
+  [ 2 ],       [ 2, 3 ],
+  [ 2, 3, 4 ], [ 3 ],
+  [ 3, 4 ],    [ 4 ]
+]
+
+function generateSubarrays(arr) {
+  const subarrays = [];
+ 
+  for (let i = 0; i < arr.length; i++) {
+    for (let j = i; j < arr.length; j++) {
+      const subarray = arr.slice(i, j + 1);
+      subarrays.push(subarray);
+    }
+  }
+ 
+  return subarrays;
+}
+
+```
+
+## Check if subsequence             
+
+```javascript
+// Example usage:
+const stringA = "abcde";
+const stringB = "ace";
+ 
+console.log(isSubsequence(stringA, stringB)); // Output: true
+
+function isSubsequence(a, b) {
+    let i = 0;
+    let j = 0;
+ 
+    while (i < a.length && j < b.length) {
+        if (a[i] === b[j]) {
+            j++;
+        }
+        i++;
+    }
+ 
+    return j === b.length;
+}
+
+```
+
+## Number of islands          
+**Time:** O(rows * cols)
+
+**Space:** O(rows + cols)
+
+```javascript
+Input: grid = [
+  ["1","1","1","1","0"],
+  ["1","1","0","1","0"],
+  ["1","1","0","0","0"],
+  ["0","0","0","0","0"]
+]
+Output: 1
+
+var numIslands = function(grid) {
+    let rows = grid.length;
+    let cols = grid[0].length;
+    let res = 0;
+    function dfs(r, c) {
+        if (r < 0 || c < 0 || r >= rows || c >= cols || !grid[r][c] || grid[r][c] === '0') {
+            return;
+        }
+        grid[r][c] = '0';
+        dfs(r - 1, c);
+        dfs(r + 1, c);
+        dfs(r, c - 1);
+        dfs(r, c + 1);
+    }
+    for (let r = 0; r < rows; r++) {
+        for (let c = 0; c < cols; c++) {
+            if (grid[r][c] === '1') {
+                res++;
+                dfs(r, c);
+            }
+        }
+    }
+    return res;
+};
+
+```
+
+## Union Find         
+
+Examples:
+
+- Detect cycles in graphs
+- How many connected components in a graph
+- If 2 nodes are in the same connected component
+
+```javascript
+var validPath = function(n, edges, source, destination) {
+  let parent = new Array(n);
+  for (let i = 0; i < parent.length; i++) {
+    parent[i] = i;
+  }
+ 
+  function find(a) {
+    while (parent[a] !== a) {
+      parent[a] = parent[parent[a]];
+      a = parent[a];
+    }
+    return a;
+  }
+ 
+  function union(a, b) {
+    const rootA = find(a);
+    const rootB = find(b);
+    if (rootA !== rootB) {
+      parent[rootA] = rootB;
+    }
+  }
+ 
+  for (let [a, b] of edges) {
+    union(a, b);
+  }
+ 
+  return find(source) === find(destination);
+};
+
+```
+
+## Reverse linked list        
+
+
+```javascript
+var reverseList = function(head) {
+  let prev = null;
+  let cur = head;
+  while (cur) {
+    [cur.next, prev, cur] = [prev, cur, cur.next];
+  }
+  return prev;
+};
+
 ```
