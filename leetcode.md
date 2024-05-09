@@ -525,3 +525,18 @@ map1 = new Map([...map1.entries()].sort((a, b) => b[1] - a[1]));
 ```javascript
 let matrix = Array.from(Array(rows), () => new Array(cols).fill(0));
 ```
+
+### Split number into digits
+```javascript
+let num = 12345;
+let digits = [];
+
+while (num != 0) {
+    digits.push(num % 10);
+    num = Math.trunc(num / 10);
+}
+digits.reverse();
+
+console.log(digits); // Output: [1, 2, 3, 4, 5]
+
+```
