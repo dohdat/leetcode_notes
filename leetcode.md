@@ -7,10 +7,10 @@
 ```javascript
 let res = [];
 function dfs(node) {
- if (!node) return false;
- node.left && dfs(node.left);
- res.push(node.val);
- node.right && dfs(node.right);
+    if (!node) return false;
+    node.left && dfs(node.left);
+    res.push(node.val);
+    node.right && dfs(node.right);
 }
 dfs(root);
 return res;
