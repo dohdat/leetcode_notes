@@ -66,7 +66,8 @@ var isValidBST = function(root) {
 ```javascript
   let preMap = new Map();
   let visited = new Set();
- 
+
+  // Adjacency matrix
   for (let [src, dst] of preq) {
     preMap.set(src, (preMap.get(src) || []).concat(dst));
     preMap.set(dst, (preMap.get(dst) || []).concat(src));
@@ -295,23 +296,21 @@ result: [
 ];
 
 function generateCombinations(arr) {
- const result = [];
- 
- function backtrack(start, current) {
- if (start === arr.length) {
- result.push(current.join(''));
- return;
- }
- 
- for (let i = start; i < arr.length; i++) {
- current.push(arr[i]);
- backtrack(i + 1, current);
- current.pop();
- }
- }
- 
- backtrack(0, []);
- return result;
+    const result = [];
+
+    function backtrack(start, current) {
+        if (start === arr.length) {
+            result.push(current.join(''));
+            return;
+        }
+        for (let i = start; i < arr.length; i++) {
+            current.push(arr[i]);
+            backtrack(i + 1, current);
+            current.pop();
+        }
+    }
+    backtrack(0, []);
+    return result;
 }
 ```
 
