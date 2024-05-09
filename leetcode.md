@@ -110,7 +110,7 @@ var search = function(nums, target) {
 };
 ```
 
-## Binary Search                   
+## Two Pointers                   
 Time: O(n) for sorted arrays, O(n^2) for unsorted arrays
 
 Space: O(1)
