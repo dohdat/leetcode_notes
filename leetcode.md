@@ -504,6 +504,33 @@ var reverseList = function(head) {
 };
 
 ```
+
+## Topdown dp  
+```javascript
+Input: n = 3
+Output: 3
+// Explanation: There are three ways to climb to the top.
+// 1. 1 step + 1 step + 1 step
+// 2. 1 step + 2 steps
+// 3. 2 steps + 1 step
+
+var climbStairs = function(n) {
+  let memo = new Map();
+  function dfs(i) {
+    if (i === n) return 1;
+    if (i > n) return 0;
+    if (memo.has(i)) {
+      return memo.get(i);
+    }
+    const ways = dfs(i + 1) + dfs(i + 2);
+    memo.set(i, ways);
+    return ways;
+  }
+  return dfs(0);
+};
+
+```  
+
 ## Useful methods
 ### HashMap sorting (keys or values)     
 
