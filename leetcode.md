@@ -167,7 +167,7 @@ var networkDelayTime = function(times, n, k) {
     let temp = arr.slice();
     for (let [source, target, cost] of times) {
       if (temp[source] === Infinity) continue;
-      temp[target] = Math.min(temp[target], temp[source] + cost);
+      temp[target] = Math.min(temp[target], arr[source] + cost);
     }
     arr = temp;
   }
