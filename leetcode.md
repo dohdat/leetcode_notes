@@ -1,8 +1,8 @@
 ## DFS                   
 
-Time: O(V + E), where V is the number of vertices and E is the number of edges.
+**Time:** O(V + E), where V is the number of vertices and E is the number of edges.
 
-Space: O(V)
+**Space:** O(V)
 
 ```javascript
 let res = [];
@@ -18,9 +18,9 @@ return res;
 
 ## BFS
 
-Time: O(V + E), where V is the number of vertices and E is the number of edges.
+**Time:** O(V + E), where V is the number of vertices and E is the number of edges.
 
-Space: O(V) when all vertices are enqueued in the queue before reaching the target node.
+**Space:** O(V) when all vertices are enqueued in the queue before reaching the target node.
 
 ```javascript
 var levelOrder = function(root) {
@@ -88,9 +88,9 @@ var isValidBST = function(root) {
 ```
 
 ## Binary Search                   
-Time: O(log n) 
+**Time:** O(log n) 
 
-Space: O(1)
+**Space:** O(1)
 ```javascript
 var search = function(nums, target) {
   let left = 0;
@@ -111,9 +111,9 @@ var search = function(nums, target) {
 ```
 
 ## Two Pointers                   
-Time: O(n) for sorted arrays, O(n^2) for unsorted arrays
+**Time:** O(n) for sorted arrays, O(n^2) for unsorted arrays
 
-Space: O(1)
+**Space:** O(1)
 ```javascript
 var maxArea = function(height) {
   let left = 0;
@@ -132,9 +132,9 @@ var maxArea = function(height) {
 };
 ```
 ## Sliding Window                   
-Time: O(n) for fixed-size windows, O(n^2) for variable-size windows
+**Time:** O(n) for fixed-size windows, O(n^2) for variable-size windows
 
-Space: O(n) 
+**Space:** O(n) 
 ```javascript
 const getMaxSumOfFiveContiguousElements = (arr) => {
   let maxSum = -Infinity;
@@ -155,9 +155,9 @@ const getMaxSumOfFiveContiguousElements = (arr) => {
 ```
 
 ## Bellman Ford                   
-Time: O(V * E), where V is the number of vertices and E is the number of edges.
+**Time:** O(V * E), where V is the number of vertices and E is the number of edges.
 
-Space: O(V + E)
+**Space:** O(V + E)
 ```javascript
 var networkDelayTime = function(times, n, k) {
   let arr = new Array(n + 1).fill(Infinity);
@@ -178,9 +178,9 @@ var networkDelayTime = function(times, n, k) {
 
 
 ## Dijkstra                   
-Time: O((V + E) log V), where V is the number of vertices and E is the number of edges.
+**Time:** O((V + E) log V), where V is the number of vertices and E is the number of edges.
 
-Space: O(V + E)
+**Space:** O(V + E)
 ```javascript
 var networkDelayTime = function(times, n, k) {
   const graph = new Map();
@@ -316,9 +316,9 @@ function generateCombinations(arr) {
 ```
 
 ## Topology Sort                
-Time Complexity: O(V + E)
+**Time Complexity:** O(V + E)
 
-Space Complexity: O(V + E)
+**Space Complexity:** O(V + E)
 
 ```javascript
 Input: numCourses = 2, prerequisites = [[1,0],[0,1]]
