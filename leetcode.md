@@ -505,3 +505,23 @@ var reverseList = function(head) {
 };
 
 ```
+## Useful methods
+### HashMap sorting (keys or values)     
+
+
+```javascript
+//Sort by keys
+map1 = new Map([...map1.entries()].sort());
+
+//Custom sort keys:
+map1 = new Map([...map1.entries()].sort((a, b) => b[0] - a[0]));
+ 
+//Custom sort values:
+map1 = new Map([...map1.entries()].sort((a, b) => b[1] - a[1]));
+
+```
+### Create 2D Array
+
+```javascript
+let matrix = Array.from(Array(rows), () => new Array(cols).fill(0));
+```
