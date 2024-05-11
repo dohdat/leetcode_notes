@@ -190,46 +190,44 @@ var networkDelayTime = function(times, n, k) {
 ```javascript
 var networkDelayTime = function(times, n, k) {
   const graph = new Map();
- 
+
   for (const [source, target, time] of times) {
     if (!graph.has(source)) {
       graph.set(source, []);
     }
     graph.get(source).push([target, time]);
   }
- 
+
   // Initialize distance array with Infinity
   const distances = Array(n + 1).fill(Infinity);
   distances[k] = 0;
- 
-  // Priority queue to store nodes based on distance, MaxPriorityQueue or MinPriorityQueue
-  const priorityQueue = new PriorityQueue(
-    (a, b) => distances[a] - distances[b]
-  );
-  priorityQueue.enqueue(k);
- 
-  while (!priorityQueue.isEmpty()) {
-    const currentNode = priorityQueue.dequeue().element;
- 
+
+  // Regular queue to store nodes
+  const queue = [];
+  queue.push(k);
+
+  while (queue.length > 0) {
+    const currentNode = queue.shift();
+
     if (graph.has(currentNode)) {
       for (const [nextNode, time] of graph.get(currentNode)) {
         const newDistance = distances[currentNode] + time;
         if (newDistance < distances[nextNode]) {
           distances[nextNode] = newDistance;
-          priorityQueue.enqueue(nextNode);
+          queue.push(nextNode);
         }
       }
     }
   }
- 
+
   // Find the maximum distance in the distances array
   const maxDistance = Math.max(...distances.slice(1));
- 
+
   // If any node is unreachable, return -1
   if (maxDistance === Infinity) {
     return -1;
   }
- 
+
   return maxDistance;
 };
 
