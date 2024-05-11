@@ -16,6 +16,25 @@ dfs(root);
 return res;
 ```
 
+### DFS:  Check if valid BST                                                                
+```javascript
+var isValidBST = function(root) {
+  function dfs(node, lower, upper) {
+    if (!node) return true;
+ 
+    if (lower < node.val && node.val < upper) {
+      return dfs(node.left, lower, node.val) &&
+        dfs(node.right, node.val, upper);
+    } else {
+      return false;
+    }
+  }
+ 
+  let res = dfs(root, -Infinity, Infinity);
+  return res;
+};
+```
+
 ## BFS
 
 **Time:** O(V + E), where V is the number of vertices and E is the number of edges.
@@ -43,24 +62,7 @@ var levelOrder = function(root) {
 ```
 
 
-DFS:  Check if valid BST                                                                
-```javascript
-var isValidBST = function(root) {
-  function dfs(node, lower, upper) {
-    if (!node) return true;
- 
-    if (lower < node.val && node.val < upper) {
-      return dfs(node.left, lower, node.val) &&
-        dfs(node.right, node.val, upper);
-    } else {
-      return false;
-    }
-  }
- 
-  let res = dfs(root, -Infinity, Infinity);
-  return res;
-};
-```
+
 ## Graph traversal (2 directions)                   
 
 ```javascript
