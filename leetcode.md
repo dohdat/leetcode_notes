@@ -220,7 +220,8 @@ var networkDelayTime = function(times, n, k) {
     }
   }
 
-  // Find the maximum distance in the distances array
+  // Find the maximum distance in the distances array, excluding the first element
+  // const distances = [Infinity, 0, 5, 10, 8];
   const maxDistance = Math.max(...distances.slice(1));
 
   // If any node is unreachable, return -1
