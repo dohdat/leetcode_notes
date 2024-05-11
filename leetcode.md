@@ -1,3 +1,27 @@
+- [DFS](#dfs)
+  - [DFS:  Check if valid BST](#dfs--check-if-valid-bst)
+- [BFS](#bfs)
+- [Graph traversal (2 directions)](#graph-traversal-2-directions)
+- [Binary Search](#binary-search)
+- [Two Pointers](#two-pointers)
+- [Sliding Window](#sliding-window)
+- [Bellman Ford](#bellman-ford)
+- [Dijkstra](#dijkstra)
+- [Backtrack (Permutations)](#backtrack-permutations)
+- [Backtrack (Combinations)](#backtrack-combinations)
+- [Topology Sort](#topology-sort)
+- [Generate subarray](#generate-subarray)
+- [Check if subsequence](#check-if-subsequence)
+- [Number of islands](#number-of-islands)
+- [Union Find](#union-find)
+- [Reverse linked list](#reverse-linked-list)
+- [Topdown dp](#topdown-dp)
+- [Useful methods](#useful-methods)
+  - [HashMap sorting (keys or values)](#hashmap-sorting-keys-or-values)
+  - [Create 2D Array](#create-2d-array)
+  - [Split number into digits](#split-number-into-digits)
+
+
 ## DFS                   
 
 **Time:** O(V + E), where V is the number of vertices and E is the number of edges.
@@ -458,7 +482,7 @@ var numIslands = function(grid) {
 
 ## Union Find         
 
-Examples:
+**Examples**:
 
 - Detect cycles in graphs
 - How many connected components in a graph
