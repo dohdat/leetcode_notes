@@ -588,9 +588,9 @@ var suggestedProducts = function(products, searchWord) {
 // Example usage:
 Input: products = ["mobile","mouse","moneypot","monitor","mousepad"], searchWord = "mouse"
 Output: [["mobile","moneypot","monitor"],["mobile","moneypot","monitor"],["mouse","mousepad"],["mouse","mousepad"],["mouse","mousepad"]]
-Explanation: products sorted lexicographically = ["mobile","moneypot","monitor","mouse","mousepad"].
-After typing m and mo all products match and we show user ["mobile","moneypot","monitor"].
-After typing mou, mous and mouse the system suggests ["mouse","mousepad"].
+// Explanation: products sorted lexicographically = ["mobile","moneypot","monitor","mouse","mousepad"].
+// After typing m and mo all products match and we show user ["mobile","moneypot","monitor"].
+// After typing mou, mous and mouse the system suggests ["mouse","mousepad"].
 
 
 ```
