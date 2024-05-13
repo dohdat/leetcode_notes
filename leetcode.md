@@ -524,73 +524,71 @@ var validPath = function(n, edges, source, destination) {
 
 ```javascript
 class TrieNode {
-    constructor() {
-        this.children = {};
-        this.isEndOfWord = false;
-    }
+  constructor() {
+    this.children = {};
+    this.isEndOfWord = false;
+    this.words = [];
+  }
 }
 
 class Trie {
-    constructor() {
-        this.root = new TrieNode();
-    }
+  constructor() {
+    this.root = new TrieNode();
+  }
 
-    insert(word) {
-        let node = this.root;
-        for (let char of word) {
-            if (!node.children[char]) {
-                node.children[char] = new TrieNode();
-            }
-            node = node.children[char];
-        }
-        node.isEndOfWord = true;
+  insert(word) {
+    let node = this.root;
+    for (let char of word) {
+      if (!node.children[char]) {
+        node.children[char] = new TrieNode();
+      }
+      node = node.children[char];
+      // Store the word in each node
+      node.words.push(word);
+      // Sort the words array to maintain lexicographical order
+      node.words.sort();
+      if (node.words.length > 3) {
+        node.words.pop();
+      }
     }
+    node.isEndOfWord = true;
+  }
+
+  search(prefix) {
+    let node = this.root;
+    for (let char of prefix) {
+      if (!node.children[char]) {
+        return [];
+      }
+      node = node.children[char];
+    }
+    return node.words;
+  }
 }
 
-function exist(board, word) {
-    const trie = new Trie();
-    trie.insert(word);
+var suggestedProducts = function(products, searchWord) {
+  let res = [];
+  // Sorting the products lexicographically
+  products.sort();
+  const trie = new Trie();
+  for (let product of products) {
+    trie.insert(product);
+  }
+  let prefix = "";
+  for (let char of searchWord) {
+    prefix += char;
+    res.push(trie.search(prefix));
+  }
+  return res;
+};
 
-    const m = board.length;
-    const n = board[0].length;
-
-    function dfs(i, j, node) {
-        if (i < 0 || i >= m || j < 0 || j >= n || !node || !board[i][j]) {
-            return false;
-        }
-        const char = board[i][j];
-        if (!node.children[char]) {
-            return false;
-        }
-        node = node.children[char];
-        if (node.isEndOfWord) {
-            return true;
-        }
-        board[i][j] = ''; // mark current cell as visited
-        const found = dfs(i + 1, j, node) || dfs(i - 1, j, node) || dfs(i, j + 1, node) || dfs(i, j - 1, node);
-        board[i][j] = char; // backtrack
-        return found;
-    }
-
-    for (let i = 0; i < m; i++) {
-        for (let j = 0; j < n; j++) {
-            if (dfs(i, j, trie.root)) {
-                return true;
-            }
-        }
-    }
-
-    return false;
-}
 
 // Example usage:
-const board = [
-    ["A", "B", "C", "E"],
-    ["S", "F", "C", "S"],
-    ["A", "D", "E", "E"]
-];
-const word = "ABCCED";
-console.log(exist(board, word)); // Output: true
+Input: products = ["mobile","mouse","moneypot","monitor","mousepad"], searchWord = "mouse"
+Output: [["mobile","moneypot","monitor"],["mobile","moneypot","monitor"],["mouse","mousepad"],["mouse","mousepad"],["mouse","mousepad"]]
+Explanation: products sorted lexicographically = ["mobile","moneypot","monitor","mouse","mousepad"].
+After typing m and mo all products match and we show user ["mobile","moneypot","monitor"].
+After typing mou, mous and mouse the system suggests ["mouse","mousepad"].
 
 
 ```
