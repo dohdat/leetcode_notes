@@ -1,28 +1,30 @@
-- [DFS](#dfs)
-  - [DFS:  Check if valid BST](#dfs--check-if-valid-bst)
-- [BFS](#bfs)
-- [Graph traversal (2 directions)](#graph-traversal-2-directions)
-- [Binary Search](#binary-search)
-- [Two Pointers](#two-pointers)
-- [Sliding Window](#sliding-window)
-- [Bellman Ford](#bellman-ford)
-- [Dijkstra](#dijkstra)
-- [Backtrack (Permutations)](#backtrack-permutations)
-- [Backtrack (Combinations)](#backtrack-combinations)
-- [Topology Sort](#topology-sort)
-- [Generate subarray](#generate-subarray)
-- [Check if subsequence](#check-if-subsequence)
-- [Number of islands](#number-of-islands)
-- [Union Find](#union-find)
-- [Reverse linked list](#reverse-linked-list)
-- [Topdown dp](#topdown-dp)
-- [Useful methods](#useful-methods)
-  - [HashMap sorting (keys or values)](#hashmap-sorting-keys-or-values)
-  - [Create 2D Array](#create-2d-array)
-  - [Split number into digits](#split-number-into-digits)
+
+- [1. DFS](#1-dfs)
+  - [1.1. DFS:  Check if valid BST](#11-dfs--check-if-valid-bst)
+- [2. BFS](#2-bfs)
+- [3. Graph traversal (2 directions)](#3-graph-traversal-2-directions)
+- [4. Binary Search](#4-binary-search)
+- [5. Two Pointers](#5-two-pointers)
+- [6. Sliding Window](#6-sliding-window)
+- [7. Bellman Ford](#7-bellman-ford)
+- [8. Dijkstra](#8-dijkstra)
+- [9. Backtrack (Permutations)](#9-backtrack-permutations)
+- [10. Backtrack (Combinations)](#10-backtrack-combinations)
+- [11. Topology Sort](#11-topology-sort)
+- [12. Generate subarray](#12-generate-subarray)
+- [13. Check if subsequence](#13-check-if-subsequence)
+- [14. Number of islands](#14-number-of-islands)
+- [15. Union Find](#15-union-find)
+- [16. Trie](#16-trie)
+- [17. Reverse linked list](#17-reverse-linked-list)
+- [18. Topdown dp](#18-topdown-dp)
+- [19. Useful methods](#19-useful-methods)
+  - [19.1. HashMap sorting (keys or values)](#191-hashmap-sorting-keys-or-values)
+  - [19.2. Create 2D Array](#192-create-2d-array)
+  - [19.3. Split number into digits](#193-split-number-into-digits)
 
 
-## DFS                   
+## 1. DFS                   
 
 **Time:** O(V + E), where V is the number of vertices and E is the number of edges.
 
@@ -40,7 +42,7 @@ dfs(root);
 return res;
 ```
 
-### DFS:  Check if valid BST                                                                
+### 1.1. DFS:  Check if valid BST                                                                
 ```javascript
 var isValidBST = function(root) {
   function dfs(node, lower, upper) {
@@ -59,7 +61,7 @@ var isValidBST = function(root) {
 };
 ```
 
-## BFS
+## 2. BFS
 
 **Time:** O(V + E), where V is the number of vertices and E is the number of edges.
 
@@ -87,7 +89,7 @@ var levelOrder = function(root) {
 
 
 
-## Graph traversal (2 directions)                   
+## 3. Graph traversal (2 directions)                   
 
 ```javascript
   let preMap = new Map();
@@ -114,7 +116,7 @@ var levelOrder = function(root) {
   return visited.size;
 ```
 
-## Binary Search                   
+## 4. Binary Search                   
 **Time:** O(log n) 
 
 **Space:** O(1)
@@ -137,7 +139,7 @@ var search = function(nums, target) {
 };
 ```
 
-## Two Pointers                   
+## 5. Two Pointers                   
 **Time:** O(n) for sorted arrays, O(n^2) for unsorted arrays
 
 **Space:** O(1)
@@ -158,7 +160,7 @@ var maxArea = function(height) {
   return max;
 };
 ```
-## Sliding Window                   
+## 6. Sliding Window                   
 **Time:** O(n) for fixed-size windows, O(n^2) for variable-size windows
 
 **Space:** O(n) 
@@ -181,7 +183,7 @@ const getMaxSumOfFiveContiguousElements = (arr) => {
 };
 ```
 
-## Bellman Ford                   
+## 7. Bellman Ford                   
 **Time:** O(V * E), where V is the number of vertices and E is the number of edges.
 
 **Space:** O(V + E)
@@ -208,7 +210,7 @@ var networkDelayTime = function(times, n, k) {
 ```
 
 
-## Dijkstra                   
+## 8. Dijkstra                   
 **Time:** O((V + E) log V), where V is the number of vertices and E is the number of edges.
 
 **Space:** O(V + E)
@@ -273,7 +275,7 @@ Dijkstra's algorithm is generally faster for graphs with non-negative weights.
 
 Bellman-Ford may be slower but is more versatile in handling negative weights.
 
-## Backtrack (Permutations)                  
+## 9. Backtrack (Permutations)                  
 **Time:** O(n!) 
 
 **Space:** O(n)
@@ -305,7 +307,7 @@ var permute = function(nums) {
   return res;
 };
 ```
-## Backtrack (Combinations)                  
+## 10. Backtrack (Combinations)                  
 **Time:** O(n!) 
 
 **Space:** O(n)
@@ -343,7 +345,7 @@ function generateCombinations(arr) {
 }
 ```
 
-## Topology Sort                
+## 11. Topology Sort                
 **Time:** O(V + E)
 
 **Space:** O(V + E)
@@ -385,7 +387,7 @@ var canFinish = function(numCourses, prerequisites) {
   return true;
 };
 ```
-## Generate subarray               
+## 12. Generate subarray               
 
 ```javascript
 Input: arr = [1, 2, 3, 4]
@@ -413,7 +415,7 @@ function generateSubarrays(arr) {
 
 ```
 
-## Check if subsequence             
+## 13. Check if subsequence             
 
 ```javascript
 // Example usage:
@@ -438,7 +440,7 @@ function isSubsequence(a, b) {
 
 ```
 
-## Number of islands          
+## 14. Number of islands          
 **Time:** O(rows * cols)
 
 **Space:** O(rows + cols)
@@ -479,7 +481,7 @@ var numIslands = function(grid) {
 
 ```
 
-## Union Find         
+## 15. Union Find         
 
 **Examples**:
 
@@ -519,7 +521,7 @@ var validPath = function(n, edges, source, destination) {
 
 ```
 
-## Trie       
+## 16. Trie       
 
 
 ```javascript
@@ -593,7 +595,7 @@ After typing mou, mous and mouse the system suggests ["mouse","mousepad"].
 
 ```
 
-## Reverse linked list        
+## 17. Reverse linked list        
 
 
 ```javascript
@@ -608,7 +610,7 @@ var reverseList = function(head) {
 
 ```
 
-## Topdown dp  
+## 18. Topdown dp  
 ```javascript
 Input: n = 3
 Output: 3
@@ -634,8 +636,8 @@ var climbStairs = function(n) {
 
 ```  
 
-## Useful methods
-### HashMap sorting (keys or values)     
+## 19. Useful methods
+### 19.1. HashMap sorting (keys or values)     
 
 
 ```javascript
@@ -649,13 +651,13 @@ map1 = new Map([...map1.entries()].sort((a, b) => b[0] - a[0]));
 map1 = new Map([...map1.entries()].sort((a, b) => b[1] - a[1]));
 
 ```
-### Create 2D Array
+### 19.2. Create 2D Array
 
 ```javascript
 let matrix = Array.from(Array(rows), () => new Array(cols).fill(0));
 ```
 
-### Split number into digits
+### 19.3. Split number into digits
 ```javascript
 let num = 12345;
 let digits = [];
