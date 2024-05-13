@@ -186,7 +186,6 @@ const getMaxSumOfFiveContiguousElements = (arr) => {
 
 **Space:** O(V + E)
 
-![image](https://github.com/dohdat/leetcode_notes/assets/30649150/9b95aef5-e579-4e65-8ab1-ced3ea9c47fe)
 
 ```javascript
 Input: times = [[2,1,1],[2,3,1],[3,4,1]], n = 4, k = 2
