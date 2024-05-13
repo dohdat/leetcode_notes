@@ -16,12 +16,13 @@
 - [14. Number of islands](#14-number-of-islands)
 - [15. Union Find](#15-union-find)
 - [16. Trie](#16-trie)
-- [17. Reverse linked list](#17-reverse-linked-list)
-- [18. Topdown dp](#18-topdown-dp)
-- [19. Useful methods](#19-useful-methods)
-  - [19.1. HashMap sorting (keys or values)](#191-hashmap-sorting-keys-or-values)
-  - [19.2. Create 2D Array](#192-create-2d-array)
-  - [19.3. Split number into digits](#193-split-number-into-digits)
+- [17. Merge intervals](#17-merge-intervals)
+- [18. Reverse linked list](#18-reverse-linked-list)
+- [19. Topdown dp](#19-topdown-dp)
+- [20. Useful methods](#20-useful-methods)
+  - [20.1. HashMap sorting (keys or values)](#201-hashmap-sorting-keys-or-values)
+  - [20.2. Create 2D Array](#202-create-2d-array)
+  - [20.3. Split number into digits](#203-split-number-into-digits)
 
 
 ## 1. DFS                   
@@ -595,7 +596,32 @@ Output: [["mobile","moneypot","monitor"],["mobile","moneypot","monitor"],["mouse
 
 ```
 
-## 17. Reverse linked list        
+## 17. Merge intervals      
+
+```javascript
+var merge = function(intervals) {
+    intervals.sort((a, b) => a[0] - b[0]);
+    let prev = intervals[0];
+    let res = [prev];
+    for (let i = 0; i < intervals.length; i++) {
+        let c = intervals[i];
+        if (c[0] <= prev[1]) {
+            prev[1] = Math.max(prev[1], c[1]);
+        } else {
+            res.push(c);
+            prev = c;
+        }
+    }
+    return res;
+};
+
+Input: intervals = [[1,3],[2,6],[8,10],[15,18]]
+Output: [[1,6],[8,10],[15,18]]
+// Explanation: Since intervals [1,3] and [2,6] overlap, merge them into [1,6].
+
+```
+
+## 18. Reverse linked list        
 
 
 ```javascript
@@ -610,7 +636,7 @@ var reverseList = function(head) {
 
 ```
 
-## 18. Topdown dp  
+## 19. Topdown dp  
 ```javascript
 Input: n = 3
 Output: 3
@@ -636,8 +662,8 @@ var climbStairs = function(n) {
 
 ```  
 
-## 19. Useful methods
-### 19.1. HashMap sorting (keys or values)     
+## 20. Useful methods
+### 20.1. HashMap sorting (keys or values)     
 
 
 ```javascript
@@ -651,13 +677,13 @@ map1 = new Map([...map1.entries()].sort((a, b) => b[0] - a[0]));
 map1 = new Map([...map1.entries()].sort((a, b) => b[1] - a[1]));
 
 ```
-### 19.2. Create 2D Array
+### 20.2. Create 2D Array
 
 ```javascript
 let matrix = Array.from(Array(rows), () => new Array(cols).fill(0));
 ```
 
-### 19.3. Split number into digits
+### 20.3. Split number into digits
 ```javascript
 let num = 12345;
 let digits = [];
