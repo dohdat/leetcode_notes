@@ -1,3 +1,13 @@
+- [1. Design Youtube](#1-design-youtube)
+  - [1.1. Requirements](#11-requirements)
+    - [1.1.1. Functional requirements](#111-functional-requirements)
+    - [1.1.2. Non-functional requirements](#112-non-functional-requirements)
+  - [1.2. Capacity estimation and constraints](#12-capacity-estimation-and-constraints)
+  - [1.3. System APIs](#13-system-apis)
+  - [1.4. High level design](#14-high-level-design)
+  - [Database schema](#database-schema)
+
+
 # 1. Design Youtube
 
 ## 1.1. Requirements
@@ -34,8 +44,6 @@ availability); if a user doesn’t see a video for a while, it should be fine.
 
 ![alt text](image.png)
 
-At a high-level we would need the following components:
-
 1. **Processing Queue:** Each uploaded video will be pushed to a processing queue to be de-queued later for encoding, thumbnail generation, and storage.
 2. **Encoder:** To encode each uploaded video into multiple formats.
 3. **Thumbnails generator:** To generate a few thumbnails for each video.
@@ -44,3 +52,21 @@ storage.
 5. **User Database:** To store user’s information, e.g., name, email, address, etc.
 6. **Video metadata storage:** A metadata database to store all the information about videos like
 title, file path in the system, uploading user, total views, likes, dislikes, etc. It will also be used to store all the video comments.
+
+## Database schema
+
+Video metadata storage - MySql
+
+- VideoID
+- Title
+- Description
+- Size
+- Thumbnail
+- Uploader/User
+- Total number of likes
+- Total number of views
+
+
+User data storage - MySql
+
+- UserID, Name, email, address, age, registration details etc.
