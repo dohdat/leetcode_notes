@@ -519,6 +519,82 @@ var validPath = function(n, edges, source, destination) {
 
 ```
 
+## Trie       
+
+
+```javascript
+class TrieNode {
+    constructor() {
+        this.children = {};
+        this.isEndOfWord = false;
+    }
+}
+
+class Trie {
+    constructor() {
+        this.root = new TrieNode();
+    }
+
+    insert(word) {
+        let node = this.root;
+        for (let char of word) {
+            if (!node.children[char]) {
+                node.children[char] = new TrieNode();
+            }
+            node = node.children[char];
+        }
+        node.isEndOfWord = true;
+    }
+}
+
+function exist(board, word) {
+    const trie = new Trie();
+    trie.insert(word);
+
+    const m = board.length;
+    const n = board[0].length;
+
+    function dfs(i, j, node) {
+        if (i < 0 || i >= m || j < 0 || j >= n || !node || !board[i][j]) {
+            return false;
+        }
+        const char = board[i][j];
+        if (!node.children[char]) {
+            return false;
+        }
+        node = node.children[char];
+        if (node.isEndOfWord) {
+            return true;
+        }
+        board[i][j] = ''; // mark current cell as visited
+        const found = dfs(i + 1, j, node) || dfs(i - 1, j, node) || dfs(i, j + 1, node) || dfs(i, j - 1, node);
+        board[i][j] = char; // backtrack
+        return found;
+    }
+
+    for (let i = 0; i < m; i++) {
+        for (let j = 0; j < n; j++) {
+            if (dfs(i, j, trie.root)) {
+                return true;
+            }
+        }
+    }
+
+    return false;
+}
+
+// Example usage:
+const board = [
+    ["A", "B", "C", "E"],
+    ["S", "F", "C", "S"],
+    ["A", "D", "E", "E"]
+];
+const word = "ABCCED";
+console.log(exist(board, word)); // Output: true
+
+
+```
+
 ## Reverse linked list        
 
 
