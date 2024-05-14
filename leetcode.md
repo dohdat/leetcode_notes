@@ -202,8 +202,8 @@ var networkDelayTime = function(times, n, k) {
   }
 
   // Initialize distance array with Infinity
-  let distances = Array(n + 1).fill(Infinity);
-  distances[k] = 0;
+  let dst = Array(n + 1).fill(Infinity);
+  dst[k] = 0;
 
   // Regular queue to store nodes
   let queue = [];
@@ -214,18 +214,18 @@ var networkDelayTime = function(times, n, k) {
 
     if (graph.has(curNode)) {
       for (let [nextNode, time] of graph.get(curNode)) {
-        let newDistance = distances[curNode] + time;
-        if (newDistance < distances[nextNode]) {
-          distances[nextNode] = newDistance;
+        let newDistance = dst[curNode] + time;
+        if (newDistance < dst[nextNode]) {
+          dst[nextNode] = newDistance;
           queue.push(nextNode);
         }
       }
     }
   }
 
-  // Find the maximum distance in the distances array, excluding the first element
-  // let distances = [Infinity, 0, 5, 10, 8];
-  let maxDistance = Math.max(...distances.slice(1));
+  // Find the maximum distance in the dst array, excluding the first element
+  // let dst = [Infinity, 0, 5, 10, 8];
+  let maxDistance = Math.max(...dst.slice(1));
 
   // If any node is unreachable, return -1
   if (maxDistance === Infinity) {
