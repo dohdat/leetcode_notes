@@ -1,5 +1,28 @@
 
-## 1. DFS                   
+## 1. Binary Search                   
+**Time:** O(log n) 
+
+**Space:** O(1)
+```javascript
+var search = function(nums, target) {
+  let left = 0;
+  let right = nums.length - 1;
+  while (left <= right) {
+    let mid = Math.floor((right + left) / 2);
+    if (nums[mid] === target) {
+      return mid;
+    }
+    if (nums[mid] > target) {
+      right = mid - 1;
+    } else {
+      left = mid + 1;
+    }
+  }
+  return -1;
+};
+```
+
+## 2. DFS                   
 
 **Time:** O(V + E), where V is the number of vertices and E is the number of edges.
 
@@ -17,7 +40,7 @@ dfs(root);
 return res;
 ```
 
-### 1.1. DFS:  Check if valid BST                                                                
+### 2.1. DFS:  Check if valid BST                                                                
 ```javascript
 var isValidBST = function(root) {
   function dfs(node, lower, upper) {
@@ -36,7 +59,7 @@ var isValidBST = function(root) {
 };
 ```
 
-## 2. BFS
+## 3. BFS
 
 **Time:** O(V + E), where V is the number of vertices and E is the number of edges.
 
@@ -62,9 +85,52 @@ var levelOrder = function(root) {
 };
 ```
 
+## 4. Two Pointers                   
+**Time:** O(n) for sorted arrays, O(n^2) for unsorted arrays
 
+**Space:** O(1)
+```javascript
+var maxArea = function(height) {
+  let left = 0;
+  let right = height.length - 1;
+  let max = 0;
+  while (left <= right) {
+    let curArea = Math.min(height[left], height[right]) * (right - left);
+    if (height[left] <= height[right]) {
+      left++;
+    } else {
+      right--;
+    }
+    max = Math.max(max, curArea);
+  }
+  return max;
+};
+```
 
-## 3. Graph traversal (2 directions)                   
+## 5. Sliding Window                   
+**Time:** O(n) for fixed-size windows, O(n^2) for variable-size windows
+
+**Space:** O(n) 
+```javascript
+let getMaxSumOfFiveContiguousElements = (arr) => {
+  let maxSum = -Infinity;
+  let currSum;
+ 
+  for (let left = 0; left <= arr.length - 5; left++) {
+    currSum = 0;
+ 
+    for (let right = left; right < left + 5; right++) {
+      currSum += arr[right];
+    }
+ 
+    maxSum = Math.max(maxSum, currSum);
+  }
+ 
+  return maxSum;
+};
+```
+
+## 6. Graph traversal (2 directions)                   
 
 ```javascript
   let preMap = new Map();
@@ -91,167 +157,7 @@ var levelOrder = function(root) {
   return visited.size;
 ```
 
-## 4. Binary Search                   
-**Time:** O(log n) 
-
-**Space:** O(1)
-```javascript
-var search = function(nums, target) {
-  let left = 0;
-  let right = nums.length - 1;
-  while (left <= right) {
-    let mid = Math.floor((right + left) / 2);
-    if (nums[mid] === target) {
-      return mid;
-    }
-    if (nums[mid] > target) {
-      right = mid - 1;
-    } else {
-      left = mid + 1;
-    }
-  }
-  return -1;
-};
-```
-
-## 5. Two Pointers                   
-**Time:** O(n) for sorted arrays, O(n^2) for unsorted arrays
-
-**Space:** O(1)
-```javascript
-var maxArea = function(height) {
-  let left = 0;
-  let right = height.length - 1;
-  let max = 0;
-  while (left <= right) {
-    let curArea = Math.min(height[left], height[right]) * (right - left);
-    if (height[left] <= height[right]) {
-      left++;
-    } else {
-      right--;
-    }
-    max = Math.max(max, curArea);
-  }
-  return max;
-};
-```
-## 6. Sliding Window                   
-**Time:** O(n) for fixed-size windows, O(n^2) for variable-size windows
-
-**Space:** O(n) 
-```javascript
-let getMaxSumOfFiveContiguousElements = (arr) => {
-  let maxSum = -Infinity;
-  let currSum;
- 
-  for (let left = 0; left <= arr.length - 5; left++) {
-    currSum = 0;
- 
-    for (let right = left; right < left + 5; right++) {
-      currSum += arr[right];
-    }
- 
-    maxSum = Math.max(maxSum, currSum);
-  }
- 
-  return maxSum;
-};
-```
-
-## 7. Bellman Ford                   
-**Time:** O(V * E), where V is the number of vertices and E is the number of edges.
-
-**Space:** O(V + E)
-
-
-```javascript
-Input: times = [[2,1,1],[2,3,1],[3,4,1]], n = 4, k = 2
-Output: 2
-var networkDelayTime = function(times, n, k) {
-  let arr = new Array(n + 1).fill(Infinity);
-  arr[k] = 0;
-  for (let i = 0; i <= n; i++) {
-    // Create a shallow copy
-    let temp = arr.slice();
-    for (let [source, target, cost] of times) {
-      if (temp[source] === Infinity) continue;
-      temp[target] = Math.min(temp[target], arr[source] + cost);
-    }
-    arr = temp;
-  }
-  arr.shift();
-  let res = Math.max(...arr);
-  return res === Infinity ? -1 : res;
-};
-```
-
-
-## 8. Dijkstra                   
-**Time:** O((V + E) log V), where V is the number of vertices and E is the number of edges.
-
-**Space:** O(V + E)
-```javascript
-var networkDelayTime = function(times, n, k) {
-  let graph = new Map();
-
-  for (let [source, target, time] of times) {
-    if (!graph.has(source)) {
-      graph.set(source, []);
-    }
-    graph.get(source).push([target, time]);
-  }
-
-  // Initialize distance array with Infinity
-  let dst = Array(n + 1).fill(Infinity);
-  dst[k] = 0;
-
-  // Regular queue to store nodes
-  let queue = [];
-  queue.push(k);
-
-  while (queue.length > 0) {
-    let curNode = queue.shift();
-
-    if (graph.has(curNode)) {
-      for (let [nextNode, time] of graph.get(curNode)) {
-        let newDistance = dst[curNode] + time;
-        if (newDistance < dst[nextNode]) {
-          dst[nextNode] = newDistance;
-          queue.push(nextNode);
-        }
-      }
-    }
-  }
-
-  // Find the maximum distance in the dst array, excluding the first element
-  // let dst = [Infinity, 0, 5, 10, 8];
-  let maxDistance = Math.max(...dst.slice(1));
-
-  // If any node is unreachable, return -1
-  if (maxDistance === Infinity) {
-    return -1;
-  }
-
-  return maxDistance;
-};
-
-```
---------------------------------------------------------------
-**When to use Dijkstra vs Bellman:**
-
-**Edge Weights:**
-
-If all edge weights are all positive, Dijkstra's algorithm is a good choice.
-
-If there are negative edge weights, or the possibility of negative cycles, Bellman-Ford is more suitable.
-
-**Performance:**
-
-Dijkstra's algorithm is generally faster for graphs with non-negative weights.
-
-Bellman-Ford may be slower but is more versatile in handling negative weights.
-
-## 9. Backtrack (Permutations)                  
+## 7. Backtrack (Permutations)                  
 **Time:** O(n!) 
 
 **Space:** O(n)
@@ -283,7 +189,7 @@ var permute = function(nums) {
   return res;
 };
 ```
-## 10. Backtrack (Combinations)                  
+## 8. Backtrack (Combinations)                  
 **Time:** O(n!) 
 
 **Space:** O(n)
@@ -321,49 +227,8 @@ function generateCombinations(arr) {
 }
 ```
 
-## 11. Topology Sort                
-**Time:** O(V + E)
 
-**Space:** O(V + E)
-
-```javascript
-Input: numCourses = 2, prerequisites = [[1,0],[0,1]]
-Output: false
-// Explanation: There are a total of 2 courses to take. 
-// To take course 1 you should have finished course 0, and to take course 0 you should also have finished course 1. So it is impossible.
-
-var canFinish = function(numCourses, prerequisites) {
-  let preMap = new Map();
-  let visited = new Set();
-  for (let [crs, preq] of prerequisites) {
-    preMap.set(crs, (preMap.get(crs) || []).concat(preq));
-  }
-  function dfs(node) {
-    if (visited.has(node)) {
-      return false;
-    }
-    visited.add(node);
-    let visiting = preMap.get(node);
-    while (visiting && visiting.length) {
-      let c = visiting.shift();
-      if (!dfs(c)) {
-        return false;
-      }
-    }
-    visited.delete(node);
-    return true;
-  }
- 
-  for (let i = 0; i < numCourses; i++) {
-    if (!dfs(i)) {
-      return false;
-    }
-  }
- 
-  return true;
-};
-```
-## 12. Generate subarray               
+## 9. Generate subarray               
 
 ```javascript
 Input: arr = [1, 2, 3, 4]
@@ -391,7 +256,7 @@ function generateSubarrays(arr) {
 
 ```
 
-## 13. Check if subsequence             
+## 10. Check if subsequence             
 
 ```javascript
 // Example usage:
@@ -416,7 +281,7 @@ function isSubsequence(a, b) {
 
 ```
 
-## 14. Number of islands          
+## 11. Number of islands          
 **Time:** O(rows * cols)
 
 **Space:** O(rows + cols)
@@ -457,7 +322,7 @@ var numIslands = function(grid) {
 
 ```
 
-## 15. Union Find         
+## 12. Union Find         
 
 **Examples**:
 
@@ -497,8 +362,7 @@ var validPath = function(n, edges, source, destination) {
 
 ```
 
-## 16. Trie       
-
+## 13. Trie       
 
 ```javascript
 class TrieNode { 
@@ -552,7 +416,7 @@ console.log(trie.search("hey")); // prints false
 
 ```
 
-## 17. Merge intervals      
+## 14. Merge intervals      
 
 ```javascript
 var merge = function(intervals) {
@@ -577,7 +441,7 @@ Output: [[1,6],[8,10],[15,18]]
 
 ```
 
-## 18. Reverse linked list        
+## 15. Reverse linked list        
 
 
 ```javascript
@@ -592,7 +456,7 @@ var reverseList = function(head) {
 
 ```
 
-## 19. Topdown dp  
+## 16. Topdown dp  
 ```javascript
 Input: n = 3
 Output: 3
@@ -618,7 +482,7 @@ var climbStairs = function(n) {
 
 ```  
 
-## 20. Stack 
+## 17. Stack 
 ```javascript
 var isValid = function(s) {
   const map = { "(": ")", "[": "]", "{": "}" };
@@ -637,6 +501,127 @@ Input: s = "()[]{}"
 Output: true
 
 ```  
+## 18. Topology Sort                
+**Time:** O(V + E)
+
+**Space:** O(V + E)
+
+```javascript
+Input: numCourses = 2, prerequisites = [[1,0],[0,1]]
+Output: false
+// Explanation: There are a total of 2 courses to take. 
+// To take course 1 you should have finished course 0, and to take course 0 you should also have finished course 1. So it is impossible.
+
+var canFinish = function(numCourses, prerequisites) {
+  let preMap = new Map();
+  let visited = new Set();
+  for (let [crs, preq] of prerequisites) {
+    preMap.set(crs, (preMap.get(crs) || []).concat(preq));
+  }
+  function dfs(node) {
+    if (visited.has(node)) {
+      return false;
+    }
+    visited.add(node);
+    let visiting = preMap.get(node);
+    while (visiting && visiting.length) {
+      let c = visiting.shift();
+      if (!dfs(c)) {
+        return false;
+      }
+    }
+    visited.delete(node);
+    return true;
+  }
+ 
+  for (let i = 0; i < numCourses; i++) {
+    if (!dfs(i)) {
+      return false;
+    }
+  }
+ 
+  return true;
+};
+```
+
+## 19. Bellman Ford (negative weights)                  
+**Time:** O(V * E), where V is the number of vertices and E is the number of edges.
+
+**Space:** O(V + E)
+
+
+```javascript
+Input: times = [[2,1,1],[2,3,1],[3,4,1]], n = 4, k = 2
+Output: 2
+var networkDelayTime = function(times, n, k) {
+  let arr = new Array(n + 1).fill(Infinity);
+  arr[k] = 0;
+  for (let i = 0; i <= n; i++) {
+    // Create a shallow copy
+    let temp = arr.slice();
+    for (let [source, target, cost] of times) {
+      if (temp[source] === Infinity) continue;
+      temp[target] = Math.min(temp[target], arr[source] + cost);
+    }
+    arr = temp;
+  }
+  arr.shift();
+  let res = Math.max(...arr);
+  return res === Infinity ? -1 : res;
+};
+```
+
+
+## 20. Dijkstra                   
+**Time:** O((V + E) log V), where V is the number of vertices and E is the number of edges.
+
+**Space:** O(V + E)
+```javascript
+var networkDelayTime = function(times, n, k) {
+  let graph = new Map();
+
+  for (let [source, target, time] of times) {
+    if (!graph.has(source)) {
+      graph.set(source, []);
+    }
+    graph.get(source).push([target, time]);
+  }
+
+  // Initialize distance array with Infinity
+  let dst = Array(n + 1).fill(Infinity);
+  dst[k] = 0;
+
+  // Regular queue to store nodes
+  let queue = [];
+  queue.push(k);
+
+  while (queue.length > 0) {
+    let curNode = queue.shift();
+
+    if (graph.has(curNode)) {
+      for (let [nextNode, time] of graph.get(curNode)) {
+        let newDistance = dst[curNode] + time;
+        if (newDistance < dst[nextNode]) {
+          dst[nextNode] = newDistance;
+          queue.push(nextNode);
+        }
+      }
+    }
+  }
+
+  // Find the maximum distance in the dst array, excluding the first element
+  // let dst = [Infinity, 0, 5, 10, 8];
+  let maxDistance = Math.max(...dst.slice(1));
+
+  // If any node is unreachable, return -1
+  if (maxDistance === Infinity) {
+    return -1;
+  }
+
+  return maxDistance;
+};
+
+```
 
 ## 21. Useful methods
 ### 21.1. HashMap sorting (keys or values)     
