@@ -235,11 +235,11 @@ var networkDelayTime = function(times, n, k) {
   queue.push(k);
 
   while (queue.length > 0) {
-    const currentNode = queue.shift();
+    const curNode = queue.shift();
 
-    if (graph.has(currentNode)) {
-      for (const [nextNode, time] of graph.get(currentNode)) {
-        const newDistance = distances[currentNode] + time;
+    if (graph.has(curNode)) {
+      for (const [nextNode, time] of graph.get(curNode)) {
+        const newDistance = distances[curNode] + time;
         if (newDistance < distances[nextNode]) {
           distances[nextNode] = newDistance;
           queue.push(nextNode);
@@ -316,7 +316,7 @@ var permute = function(nums) {
 // Generate all possible combos.
 const arr = ["cha", "r", "act", "ers"];
  
-result: [
+res: [
  "characters",
  "charers",
  "chaacters",
@@ -328,21 +328,21 @@ result: [
 ];
 
 function generateCombinations(arr) {
-    const result = [];
+    const res = [];
 
-    function backtrack(start, current) {
+    function backtrack(start, cur) {
         if (start === arr.length) {
-            result.push(current.join(''));
+            res.push(cur.join(''));
             return;
         }
         for (let i = start; i < arr.length; i++) {
-            current.push(arr[i]);
-            backtrack(i + 1, current);
-            current.pop();
+            cur.push(arr[i]);
+            backtrack(i + 1, cur);
+            cur.pop();
         }
     }
     backtrack(0, []);
-    return result;
+    return res;
 }
 ```
 
