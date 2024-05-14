@@ -526,72 +526,53 @@ var validPath = function(n, edges, source, destination) {
 
 
 ```javascript
-class TrieNode {
-  constructor() {
-    this.children = {};
-    this.isEndOfWord = false;
-    this.words = [];
-  }
-}
+class TrieNode { 
+	constructor() { 
+		this.children = new Map(); 
+		this.isEndOfWord = false; 
+	} 
+} 
 
-class Trie {
-  constructor() {
-    this.root = new TrieNode();
-  }
+class Trie { 
+	constructor() { 
+		this.root = new TrieNode(); 
+	} 
 
-  insert(word) {
-    let node = this.root;
-    for (let char of word) {
-      if (!node.children[char]) {
-        node.children[char] = new TrieNode();
-      }
-      node = node.children[char];
-      // Store the word in each node
-      node.words.push(word);
-      // Sort the words array to maintain lexicographical order
-      node.words.sort();
-      if (node.words.length > 3) {
-        node.words.pop();
-      }
-    }
-    node.isEndOfWord = true;
-  }
+	insert(word) { 
+		let current = this.root; 
+		for (let i = 0; i < word.length; i++) { 
+			const ch = word.charAt(i); 
+			if (!current.children.has(ch)) { 
+				current.children.set(ch, new TrieNode()); 
+			} 
+			current = current.children.get(ch); 
+		} 
+		current.isEndOfWord = true; 
+	} 
 
-  search(prefix) {
-    let node = this.root;
-    for (let char of prefix) {
-      if (!node.children[char]) {
-        return [];
-      }
-      node = node.children[char];
-    }
-    return node.words;
-  }
-}
+	search(word) { 
+		let current = this.root; 
+		for (let i = 0; i < word.length; i++) { 
+			const ch = word.charAt(i); 
+			if (!current.children.has(ch)) { 
+				return false; 
+			} 
+			current = current.children.get(ch); 
+		} 
+		return current.isEndOfWord; 
+	} 
+} 
 
-var suggestedProducts = function(products, searchWord) {
-  let res = [];
-  // Sorting the products lexicographically
-  products.sort();
-  let trie = new Trie();
-  for (let product of products) {
-    trie.insert(product);
-  }
-  let prefix = "";
-  for (let char of searchWord) {
-    prefix += char;
-    res.push(trie.search(prefix));
-  }
-  return res;
-};
+const trie = new Trie(); 
+trie.insert("hello"); 
+trie.insert("world"); 
+trie.insert("hi"); 
 
+console.log(trie.search("hello")); // prints true 
+console.log(trie.search("world")); // prints true 
+console.log(trie.search("hi")); // prints true 
+console.log(trie.search("hey")); // prints false 
 
-// Example usage:
-Input: products = ["mobile","mouse","moneypot","monitor","mousepad"], searchWord = "mouse"
-Output: [["mobile","moneypot","monitor"],["mobile","moneypot","monitor"],["mouse","mousepad"],["mouse","mousepad"],["mouse","mousepad"]]
-// Explanation: products sorted lexicographically = ["mobile","moneypot","monitor","mouse","mousepad"].
-// After typing m and mo all products match and we show user ["mobile","moneypot","monitor"].
-// After typing mou, mous and mouse the system suggests ["mouse","mousepad"].
 
 
 ```
