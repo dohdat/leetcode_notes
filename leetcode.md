@@ -539,27 +539,27 @@ class Trie {
 	} 
 
 	insert(word) { 
-		let current = this.root; 
+		let cur = this.root; 
 		for (let i = 0; i < word.length; i++) { 
 			const ch = word.charAt(i); 
-			if (!current.children.has(ch)) { 
-				current.children.set(ch, new TrieNode()); 
+			if (!cur.children.has(ch)) { 
+				cur.children.set(ch, new TrieNode()); 
 			} 
-			current = current.children.get(ch); 
+			cur = cur.children.get(ch); 
 		} 
-		current.isEndOfWord = true; 
+		cur.isEndOfWord = true; 
 	} 
 
 	search(word) { 
-		let current = this.root; 
+		let cur = this.root; 
 		for (let i = 0; i < word.length; i++) { 
 			const ch = word.charAt(i); 
-			if (!current.children.has(ch)) { 
+			if (!cur.children.has(ch)) { 
 				return false; 
 			} 
-			current = current.children.get(ch); 
+			cur = cur.children.get(ch); 
 		} 
-		return current.isEndOfWord; 
+		return cur.isEndOfWord; 
 	} 
 } 
 
