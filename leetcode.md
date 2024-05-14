@@ -527,7 +527,7 @@ var validPath = function(n, edges, source, destination) {
 
 ```javascript
 class TrieNode {
-  letructor() {
+  constructor() {
     this.children = {};
     this.isEndOfWord = false;
     this.words = [];
@@ -535,7 +535,7 @@ class TrieNode {
 }
 
 class Trie {
-  letructor() {
+  constructor() {
     this.root = new TrieNode();
   }
 
