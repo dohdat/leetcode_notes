@@ -1,30 +1,4 @@
 
-- [1. DFS](#1-dfs)
-  - [1.1. DFS:  Check if valid BST](#11-dfs--check-if-valid-bst)
-- [2. BFS](#2-bfs)
-- [3. Graph traversal (2 directions)](#3-graph-traversal-2-directions)
-- [4. Binary Search](#4-binary-search)
-- [5. Two Pointers](#5-two-pointers)
-- [6. Sliding Window](#6-sliding-window)
-- [7. Bellman Ford](#7-bellman-ford)
-- [8. Dijkstra](#8-dijkstra)
-- [9. Backtrack (Permutations)](#9-backtrack-permutations)
-- [10. Backtrack (Combinations)](#10-backtrack-combinations)
-- [11. Topology Sort](#11-topology-sort)
-- [12. Generate subarray](#12-generate-subarray)
-- [13. Check if subsequence](#13-check-if-subsequence)
-- [14. Number of islands](#14-number-of-islands)
-- [15. Union Find](#15-union-find)
-- [16. Trie](#16-trie)
-- [17. Merge intervals](#17-merge-intervals)
-- [18. Reverse linked list](#18-reverse-linked-list)
-- [19. Topdown dp](#19-topdown-dp)
-- [20. Useful methods](#20-useful-methods)
-  - [20.1. HashMap sorting (keys or values)](#201-hashmap-sorting-keys-or-values)
-  - [20.2. Create 2D Array](#202-create-2d-array)
-  - [20.3. Split number into digits](#203-split-number-into-digits)
-
-
 ## 1. DFS                   
 
 **Time:** O(V + E), where V is the number of vertices and E is the number of edges.
