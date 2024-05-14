@@ -678,3 +678,14 @@ digits.reverse();
 console.log(digits); // Output: [1, 2, 3, 4, 5]
 
 ```
+
+### 20.4. Filter
+```javascript
+const words = ['spray', 'elite', 'exuberant', 'destruction', 'present'];
+
+const result = words.filter((word) => word.length > 6);
+
+console.log(result);
+// Expected output: Array ["exuberant", "destruction", "present"]
+
+```
