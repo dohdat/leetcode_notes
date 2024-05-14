@@ -618,8 +618,28 @@ var climbStairs = function(n) {
 
 ```  
 
-## 20. Useful methods
-### 20.1. HashMap sorting (keys or values)     
+## 20. Stack 
+```javascript
+var isValid = function(s) {
+  const map = { "(": ")", "[": "]", "{": "}" };
+  let stack = [];
+  for (let i = 0; i < s.length; i++) {
+    if (map[s[i]]) {
+      stack.push(map[s[i]]);
+    } else if (stack.pop() !== s[i]) {
+      return false;
+    }
+  }
+  return stack.length === 0;
+};
+
+Input: s = "()[]{}"
+Output: true
+
+```  
+
+## 21. Useful methods
+### 21.1. HashMap sorting (keys or values)     
 
 
 ```javascript
@@ -633,13 +653,13 @@ map1 = new Map([...map1.entries()].sort((a, b) => b[0] - a[0]));
 map1 = new Map([...map1.entries()].sort((a, b) => b[1] - a[1]));
 
 ```
-### 20.2. Create 2D Array
+### 21.2. Create 2D Array
 
 ```javascript
 let matrix = Array.from(Array(rows), () => new Array(cols).fill(0));
 ```
 
-### 20.3. Split number into digits
+### 21.3. Split number into digits
 ```javascript
 let num = 12345;
 let digits = [];
@@ -654,7 +674,7 @@ console.log(digits); // Output: [1, 2, 3, 4, 5]
 
 ```
 
-### 20.4. Filter
+### 21.4. Filter
 ```javascript
 const words = ['spray', 'elite', 'exuberant', 'destruction', 'present'];
 
