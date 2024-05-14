@@ -166,7 +166,7 @@ var maxArea = function(height) {
 
 **Space:** O(n) 
 ```javascript
-const getMaxSumOfFiveContiguousElements = (arr) => {
+let getMaxSumOfFiveContiguousElements = (arr) => {
   let maxSum = -Infinity;
   let currSum;
  
@@ -217,9 +217,9 @@ var networkDelayTime = function(times, n, k) {
 **Space:** O(V + E)
 ```javascript
 var networkDelayTime = function(times, n, k) {
-  const graph = new Map();
+  let graph = new Map();
 
-  for (const [source, target, time] of times) {
+  for (let [source, target, time] of times) {
     if (!graph.has(source)) {
       graph.set(source, []);
     }
@@ -227,19 +227,19 @@ var networkDelayTime = function(times, n, k) {
   }
 
   // Initialize distance array with Infinity
-  const distances = Array(n + 1).fill(Infinity);
+  let distances = Array(n + 1).fill(Infinity);
   distances[k] = 0;
 
   // Regular queue to store nodes
-  const queue = [];
+  let queue = [];
   queue.push(k);
 
   while (queue.length > 0) {
-    const curNode = queue.shift();
+    let curNode = queue.shift();
 
     if (graph.has(curNode)) {
-      for (const [nextNode, time] of graph.get(curNode)) {
-        const newDistance = distances[curNode] + time;
+      for (let [nextNode, time] of graph.get(curNode)) {
+        let newDistance = distances[curNode] + time;
         if (newDistance < distances[nextNode]) {
           distances[nextNode] = newDistance;
           queue.push(nextNode);
@@ -249,8 +249,8 @@ var networkDelayTime = function(times, n, k) {
   }
 
   // Find the maximum distance in the distances array, excluding the first element
-  // const distances = [Infinity, 0, 5, 10, 8];
-  const maxDistance = Math.max(...distances.slice(1));
+  // let distances = [Infinity, 0, 5, 10, 8];
+  let maxDistance = Math.max(...distances.slice(1));
 
   // If any node is unreachable, return -1
   if (maxDistance === Infinity) {
@@ -314,7 +314,7 @@ var permute = function(nums) {
 **Space:** O(n)
 ```javascript
 // Generate all possible combos.
-const arr = ["cha", "r", "act", "ers"];
+let arr = ["cha", "r", "act", "ers"];
  
 res: [
  "characters",
@@ -328,7 +328,7 @@ res: [
 ];
 
 function generateCombinations(arr) {
-    const res = [];
+    let res = [];
 
     function backtrack(start, cur) {
         if (start === arr.length) {
@@ -402,11 +402,11 @@ Output:
 ]
 
 function generateSubarrays(arr) {
-  const subarrays = [];
+  let subarrays = [];
  
   for (let i = 0; i < arr.length; i++) {
     for (let j = i; j < arr.length; j++) {
-      const subarray = arr.slice(i, j + 1);
+      let subarray = arr.slice(i, j + 1);
       subarrays.push(subarray);
     }
   }
@@ -420,8 +420,8 @@ function generateSubarrays(arr) {
 
 ```javascript
 // Example usage:
-const stringA = "abcde";
-const stringB = "ace";
+let stringA = "abcde";
+let stringB = "ace";
  
 console.log(isSubsequence(stringA, stringB)); // Output: true
 
@@ -506,8 +506,8 @@ var validPath = function(n, edges, source, destination) {
   }
  
   function union(a, b) {
-    const rootA = find(a);
-    const rootB = find(b);
+    let rootA = find(a);
+    let rootB = find(b);
     if (rootA !== rootB) {
       parent[rootA] = rootB;
     }
@@ -527,7 +527,7 @@ var validPath = function(n, edges, source, destination) {
 
 ```javascript
 class TrieNode {
-  constructor() {
+  letructor() {
     this.children = {};
     this.isEndOfWord = false;
     this.words = [];
@@ -535,7 +535,7 @@ class TrieNode {
 }
 
 class Trie {
-  constructor() {
+  letructor() {
     this.root = new TrieNode();
   }
 
@@ -573,7 +573,7 @@ var suggestedProducts = function(products, searchWord) {
   let res = [];
   // Sorting the products lexicographically
   products.sort();
-  const trie = new Trie();
+  let trie = new Trie();
   for (let product of products) {
     trie.insert(product);
   }
@@ -653,7 +653,7 @@ var climbStairs = function(n) {
     if (memo.has(i)) {
       return memo.get(i);
     }
-    const ways = dfs(i + 1) + dfs(i + 2);
+    let ways = dfs(i + 1) + dfs(i + 2);
     memo.set(i, ways);
     return ways;
   }
