@@ -628,6 +628,9 @@ var networkDelayTime = function(times, n, k) {
 
 
 ```javascript
+// Create a hashmap
+const hashmap = nums.reduce((acc, val) => acc.set(val, (acc.get(val) || 0) + 1), new Map());
+
 //Sort by keys
 map1 = new Map([...map1.entries()].sort());
 
