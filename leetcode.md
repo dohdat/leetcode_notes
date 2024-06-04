@@ -133,7 +133,7 @@ let getMaxSumOfFiveContiguousElements = (arr) => {
 ## 6. Graph traversal (2 directions)                   
 
 ```javascript
-  var minScore = function(n, roads) {
+var minScore = function(n, roads) {
   let visited = new Set();
   const preMap = new Map();
 
