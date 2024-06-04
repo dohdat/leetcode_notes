@@ -152,7 +152,8 @@ var minScore = function(n, roads) {
 
   function dfs(node) {
     visited.add(node);
-    for (const [nei, dis] of preMap.get(node)) {
+    const neighbors = preMap.get(node) || [];
+    for (const [nei, dis] of neighbors) {
       min = Math.min(min, dis);
       if (visited.has(nei)) {
         continue;
