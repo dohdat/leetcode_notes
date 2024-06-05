@@ -468,26 +468,36 @@ var reverseList = function(head) {
 
 ## 16. Topdown dp  
 ```javascript
-Input: n = 3
-Output: 3
-// Explanation: There are three ways to climb to the top.
-// 1. 1 step + 1 step + 1 step
-// 2. 1 step + 2 steps
-// 3. 2 steps + 1 step
+Input: nums = [1,1,1,1,1], target = 3
+Output: 5
+Explanation: There are 5 ways to assign symbols to make the sum of nums be target 3.
+-1 + 1 + 1 + 1 + 1 = 3
++1 - 1 + 1 + 1 + 1 = 3
++1 + 1 - 1 + 1 + 1 = 3
++1 + 1 + 1 - 1 + 1 = 3
++1 + 1 + 1 + 1 - 1 = 3
 
-var climbStairs = function(n) {
+var findTargetSumWays = function(nums, target) {
   let memo = new Map();
-  function dfs(i) {
-    if (i === n) return 1;
-    if (i > n) return 0;
-    if (memo.has(i)) {
-      return memo.get(i);
+
+  function backtrack(index, total) {
+    if (index === nums.length) {
+      return total === target ? 1 : 0;
     }
-    let ways = dfs(i + 1) + dfs(i + 2);
-    memo.set(i, ways);
-    return ways;
+
+    let key = `${index},${total}`;
+    if (memo.has(key)) {
+      return memo.get(key);
+    }
+
+    let add = backtrack(index + 1, total + nums[index]);
+    let subtract = backtrack(index + 1, total - nums[index]);
+
+    memo.set(key, add + subtract);
+    return add + subtract;
   }
-  return dfs(0);
+
+  return backtrack(0, 0);
 };
 
 ```  
