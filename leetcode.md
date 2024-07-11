@@ -785,3 +785,73 @@ var insert = function(intervals, newInterval) {
 };
 
 ```
+
+### 21.6. Robinhood orders
+```javascript
+
+class Order {
+    constructor(id, type, price, quantity) {
+        this.id = id;
+        this.type = type;  // 'buy' or 'sell'
+        this.price = price;
+        this.quantity = quantity;
+        this.timestamp = Date.now();
+    }
+}
+
+class OrderBook {
+    constructor() {
+        this.buyOrders = [];
+        this.sellOrders = [];
+    }
+
+    addOrder(order) {
+        if (order.type === 'buy') {
+            this.buyOrders.push(order);
+            this.buyOrders.sort((a, b) => b.price - a.price || a.timestamp - b.timestamp);
+        } else {
+            this.sellOrders.push(order);
+            this.sellOrders.sort((a, b) => a.price - b.price || a.timestamp - b.timestamp);
+        }
+        this.matchOrders();
+    }
+
+    matchOrders() {
+        while (this.buyOrders.length && this.sellOrders.length) {
+            let buyOrder = this.buyOrders[0];
+            let sellOrder = this.sellOrders[0];
+
+            if (buyOrder.price >= sellOrder.price) {
+                let quantityToMatch = Math.min(buyOrder.quantity, sellOrder.quantity);
+                console.log(`Matched ${quantityToMatch} @ ${sellOrder.price}`);
+
+                buyOrder.quantity -= quantityToMatch;
+                sellOrder.quantity -= quantityToMatch;
+
+                if (buyOrder.quantity === 0) {
+                    this.buyOrders.shift();
+                }
+                if (sellOrder.quantity === 0) {
+                    this.sellOrders.shift();
+                }
+            } else {
+                break;
+            }
+        }
+    }
+
+    cancelOrder(id) {
+        this.buyOrders = this.buyOrders.filter(order => order.id !== id);
+        this.sellOrders = this.sellOrders.filter(order => order.id !== id);
+    }
+}
+
+// Example Usage
+let orderBook = new OrderBook();
+orderBook.addOrder(new Order(1, 'buy', 100, 10));
+orderBook.addOrder(new Order(2, 'sell', 90, 5));
+orderBook.addOrder(new Order(3, 'sell', 100, 5));
+orderBook.addOrder(new Order(4, 'buy', 105, 5));
+
+
+```
