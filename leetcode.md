@@ -701,3 +701,54 @@ console.log(result);
 // Expected output: Array ["exuberant", "destruction", "present"]
 
 ```
+
+### 21.5. MinQueue
+```javascript
+class MinQueue {
+    constructor() {
+        this.queue = [];
+        this.minQueue = [];
+    }
+
+    enqueue(value) {
+        this.queue.push(value);
+        
+        while (this.minQueue.length > 0 && this.minQueue[this.minQueue.length - 1] > value) {
+            this.minQueue.pop();
+        }
+        this.minQueue.push(value);
+    }
+
+    dequeue() {
+        if (this.queue.length === 0) {
+            throw new Error("Queue is empty");
+        }
+        let removedValue = this.queue.shift();
+        
+        if (removedValue === this.minQueue[0]) {
+            this.minQueue.shift();
+        }
+        
+        return removedValue;
+    }
+
+    getMin() {
+        if (this.minQueue.length === 0) {
+            throw new Error("Queue is empty");
+        }
+        return this.minQueue[0];
+    }
+}
+
+// Example usage:
+let mq = new MinQueue();
+mq.enqueue(3);
+mq.enqueue(1);
+mq.enqueue(2);
+console.log(mq.getMin()); // Output: 1
+mq.dequeue();
+console.log(mq.getMin()); // Output: 1
+mq.dequeue();
+console.log(mq.getMin()); // Output: 2
+
+```
