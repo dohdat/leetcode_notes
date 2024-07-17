@@ -133,38 +133,41 @@ let getMaxSumOfFiveContiguousElements = (arr) => {
 ## 6. Graph traversal (2 directions)                   
 
 ```javascript
-var minScore = function(n, roads) {
-  let visited = new Set();
-  const preMap = new Map();
+var countPairs = function(n, edges) {
+  let preMap = new Map();
 
-  for (const [source, target, time] of roads) {
+  for (const [source, target] of edges) {
     if (!preMap.has(source)) {
       preMap.set(source, []);
     }
     if (!preMap.has(target)) {
       preMap.set(target, []);
     }
-    preMap.get(source).push([target, time]);
-    preMap.get(target).push([source, time]);
+    preMap.get(source).push([target]);
+    preMap.get(target).push([source]);
   }
 
-  let min = Infinity;
-
-  function dfs(node) {
+  function dfs(node, visited) {
     visited.add(node);
     const neighbors = preMap.get(node) || [];
     for (const [nei, dis] of neighbors) {
-      min = Math.min(min, dis);
       if (visited.has(nei)) {
         continue;
       }
-      dfs(nei);
+      dfs(nei, visited);
     }
+    return visited;
   }
 
-  dfs(1);
-  return min;
+  for (let i = 0; i < edges.length; i++) {
+    const visitedNodes = dfs(i, new Set());
+  }
 };
+
+i:  0
+visitedNodes:  Set(4) { 0, 2, 4, 5 }
+i:  1
+visitedNodes:  Set(2) { 1, 6 }
 ```
 
 ## 7. Backtrack (Permutations)                  
