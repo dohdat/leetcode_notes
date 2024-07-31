@@ -29,12 +29,18 @@ By focusing on the customers' needs, actively seeking their input, and deliverin
 
 # System Design
 
-### Understand the problem and establish design scope: 3 - 10 minutes
+### 1 - Understand the problem and establish design scope: 3 - 10 minutes
+What are the primary features and use cases that the system needs to support?
+What is the expected scale of the system in terms of users and traffic (e.g., requests per second)?
+What types of data will the system handle, and are there any specific requirements for data storage, consistency, or integrity?
 
-### Step 2 Propose high-level design and get buy-in: 10 - 15 minutes
+What are the expected performance metrics, such as response time or latency?
+What are the uptime and availability requirements? How should the system handle failures or outages?
 
-### Step 3 Design deep dive: 10 - 25 minutes
-### Step 4 Wrap: 3 - 5 minutes
+### 2 - Propose high-level design and get buy-in: 10 - 15 minutes
+
+### 3 - Design deep dive: 10 - 25 minutes
+### 4 -  Wrap: 3 - 5 minutes
 
 
 ### NoSQL vs SQL
