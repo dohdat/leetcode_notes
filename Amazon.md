@@ -28,7 +28,7 @@ By focusing on the customers' needs, actively seeking their input, and deliverin
 
 
 # System Design
-
+## Design Newsfeed
 ### 1 - Understand the problem and establish design scope: 3 - 10 minutes
 What are the primary features and use cases that the system needs to support?
 What is the expected scale of the system in terms of users and traffic (e.g., requests per second)?
@@ -42,5 +42,6 @@ What are the uptime and availability requirements? How should the system handle 
 ### 3 - Design deep dive: 10 - 25 minutes
 ### 4 -  Wrap: 3 - 5 minutes
 
+## Design a Booking system
 
 ### NoSQL vs SQL
