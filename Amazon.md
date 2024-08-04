@@ -28,18 +28,107 @@ By focusing on the customers' needs, actively seeking their input, and deliverin
 
 
 # System Design
-## Design Newsfeed
-### 1 - Understand the problem and establish design scope: 3 - 10 minutes
-What are the primary features and use cases that the system needs to support?
-What is the expected scale of the system in terms of users and traffic (e.g., requests per second)?
-What types of data will the system handle, and are there any specific requirements for data storage, consistency, or integrity?
+## Design Youtube
 
-What are the expected performance metrics, such as response time or latency?
-What are the uptime and availability requirements? How should the system handle failures or outages?
+### 1 - Understand the problem and establish design scope: 3 - 10 minutes
+
+**Functional requirements:**
+- Users can upload videos
+- Users can like, comment, share videos
+- Users can subscribe to channels
+- Search functionality
+
+**Non-functional requirements:**
+- Scalability to handle millions of concurrent users
+- High availability and reliability
+- Low latency video streaming
+- Secure user data management
+- Efficient content delivery network (CDN) for global reach
+
+
 
 ### 2 - Propose high-level design and get buy-in: 10 - 15 minutes
+![image](https://github.com/user-attachments/assets/cab2f5e7-e53e-4121-b415-dc6b7c8c8bd6)
+
+**Client-side application:**
+- Web and mobile interfaces
+- Video player for streaming
+- User interaction features (likes, comments, subscriptions)
+
+**Backend services:**
+- User management services: authentication, authorization, user profiles, subscriptions.
+- Video upload and encoding services: handles video uploads, encode into multiple formats, storing in a video storage system.
+- CDN: distributes video content globally to reduce latency and improve streaming quality.
+- Recommendation system: suggests video based on user activity, history and trends.
+- Search service: allows users to search for videos, channels.
+- Notification service: Sends notifications for new videos, comments.
+
+**Database system:**
+- Metadata database: stores video metadata, user information, comments, likes
+- NoSQL database: Used for storing large amounts of unstructured data like comments, likes
+- Search index: for fast retrieval of search results
+- Cache: for storing frequently accessed data to reduce database load.
+
+**Storage sytem:**
+- Blob storage (S3): for storing raw video files
+- Transcode video storage: for storing videos in different formats and resolutions
+
+**Load balancer:**
+- Distributes incoming traffic across multiple servers to ensure high availability and reliability.
 
 ### 3 - Design deep dive: 10 - 25 minutes
+
+![image](https://github.com/user-attachments/assets/3e1fcf57-f41a-4386-993c-531b51ed17c6)
+
+**Web Server:**
+- Handles incoming HTTP requests from the client like serving web pages, handling video playback requests.
+
+**Load balancer:**
+- Distributes incoming requests across multiple web servers to ensure no single server is overwhelmed. This helps in managing high traffic and provides fault tolerance.
+
+**API Server**
+- Manages communication between the Web Server and various backend services, including metadata storage and retrieval. This server might also handle user authentication, comments, likes, and other API-related tasks.
+
+**Metadata Storage:**
+- Stores metadata related to videos such as titles, descriptions, tags, and other attributes. This database is queried whenever a user searches for a video or when recommendations are generated.
+
+**Metadata:**
+- Refers to the information about videos that is used to categorize, search, and recommend videos. It is crucial for the functionality of the platform, enabling efficient data retrieval and processing.
+
+**Transcoding Server:**
+- Converts uploaded videos into different formats and resolutions. This allows YouTube to serve videos at various quality levels depending on the user's device and network conditions.
+
+**Video Storage:**
+- Where the actual video files are stored. After transcoding, the videos are stored here in different formats and resolutions.
+
+**CDN:**
+- A distributed network of servers that delivers video content to users from a location geographically closest to them. This reduces latency and improves video streaming quality.
+
+**Data types:**
+
+**User:**
+- userId: UUID unique id for the user.
+- email (string)
+- username (string)
+- profilePictureUrl (string)
+
+**Video:**
+- videoID: UUID
+- title (string)
+- description (string)
+- uploaderId (string)
+- uploadedDate (DateTime)
+
+**Comment**
+- commentID (UUID)
+- videoID
+- userID
+- commentText
+- timestamp (datetime)
+  
+
+  
+
 ### 4 -  Wrap: 3 - 5 minutes
 
 ## Design a Booking system
