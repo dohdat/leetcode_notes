@@ -126,10 +126,20 @@ By focusing on the customers' needs, actively seeking their input, and deliverin
 - commentText
 - timestamp (datetime)
   
-
-  
-
 ### 4 -  Wrap: 3 - 5 minutes
+
+**Handles locking**
+- Pessimistic locking:
+  - Locks the data when a transaction begins to prevent other transactions from accessing it until the lock is released. Performance bottlenecks.
+- Optimistic locking:
+  - Allows multiple transactions to read the same data, but checks for conflicts before committing changes. If a conflict is detected, the transaction is rolled back.
+ 
+**Sharding:**
+- Sharding divides a large database into smaller, more manageable pieces, each called a shard.
+  - Range-Based Sharding: Distributes data based on a range of values (e.g., user IDs 1-1000 in one shard).
+  - Hash-Based Sharding: Uses a hash function on the shard key to evenly distribute data.
+  - Geographical Sharding: Divides data based on geographic location to reduce latency.
+
 
 ## Design a Booking system
 
