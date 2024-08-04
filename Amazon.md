@@ -141,6 +141,21 @@ By focusing on the customers' needs, actively seeking their input, and deliverin
   - Geographical Sharding: Divides data based on geographic location to reduce latency.
 
 
-## Design a Booking system
+## Design a Rate Limiter
+### 1 - Understand the problem and establish design scope: 3 - 10 minutes
 
-### NoSQL vs SQL
+
+
+
+### 2 - Propose high-level design and get buy-in: 10 - 15 minutes
+
+
+
+### 3 - Design deep dive: 10 - 25 minutes
+
+
+  
+### 4 -  Wrap: 3 - 5 minutes
+
+
+
