@@ -19,8 +19,14 @@ I took ownership of a ticket to add a section to the connection page, which I su
 Realizing that the problem affected other parts of the page, I proactively extended the fix to those areas as well. This caused over 50 WDIO tests to break. After consulting with a senior engineer, I took responsibility for fixing all the tests, despite the challenges of them passing locally but failing in the CI/CD pipeline. I worked through the weekend to resolve these issues, and the senior engineer was very pleased with the final result.
   
 ### Invent and Simplify
-- Implemented drag-and-drop functionality in Service Sandbox, simplifying service topology creation.
-- Transitioned the Service Definition preview page from Backbone to React, modernizing the UI and enabling advanced features like outlier detection.
+- Drag and drop
+  - Took on a critical feature for Service Sandbox involving drag-and-drop functionality, initially assigned to a senior engineer due to its complexity and lack of precedent in Splunk.
+  - After the senior engineer determined the feature was not feasible following a 2-3 week investigation, I offered to explore it further after completing my own tasks early.
+  - Leveraged documentation on the D3 library and gradually implemented features such as node detection, mouse interaction, and canvas panning and zooming, demonstrating slow but steady progress to the team.
+  - Despite initial estimates of a 2-week timeline, the feature required an additional month to fully develop. Successfully delivered the drag-and-drop functionality, allowing users to create service dependencies visually, which resulted in a patent and a SPOT award for my contribution.
+
+- Backbone to React:
+  - Transitioned the Service Definition preview page from Backbone to React, modernizing the UI and enabling advanced features like outlier detection.
 
 ### Are Right, A Lot
 - Diagnosed complex issues like KV store problems and ITSI search head overloads, providing effective solutions that resolved critical customer incidents.
