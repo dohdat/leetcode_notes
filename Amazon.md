@@ -40,8 +40,12 @@
 - By tackling the tricky parts of calculating and showing these scores and using feedback to improve things, I made sure the feature really met user needs and made the tool better overall.
 
 ### Learn and Be Curious
-- Actively engaged in sprint demos and gathered feedback to improve development efforts and adapt to customer needs.
-- Explored and integrated machine learning techniques into ITSI's Adaptive Thresholding project to enhance monitoring capabilities.
+**Backbone to React, added Adaptive Thresholding**
+- Actively engaged in demos and discussed ideas regarding Adaptive Thresholding algorithms.
+- I dove into outlier detection as part of the ITSI Adaptive Thresholding project, which got me learning more about machine learning and how adaptive thresholding works.
+- I wasn’t familiar with these concepts before, but I saw their potential to really boost our feature's effectiveness.
+- I spent time understanding how to apply machine learning to predict anomalies and improve KPI monitoring.
+- This curiosity helped me build a better feature and really pushed me to expand my skills beyond my usual scope.
 
 ### Hire and Develop the Best
 - Worked closely with other senior engineers, leading by example in the design and implementation of critical features.
