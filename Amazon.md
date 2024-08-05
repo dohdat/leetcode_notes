@@ -1,30 +1,55 @@
 # Leadership Principles
 
 ### Customer Obsession
-I noticed that several customers were consistently facing challenges with the ITSI rules engine, leading to frustration and downtime. Recognizing the importance of customer satisfaction, I decided to take proactive steps to address these issues.
+Investigated and provided solutions for critical customer incidents such as severe load fluctuations on ITSI Search Head instances and Puppet agent configuration issues.
+Developed the Service Sandbox and Adaptive Thresholding features to enhance user experience and address key pain points in monitoring and service health visualization.
 
-First, I gathered detailed feedback from the affected customers through support tickets, direct interviews, and surveys. This helped me identify the common pain points and recurring problems. One major issue was the complexity of configuring the rules engine, which required significant manual effort and deep technical knowledge.
-
-To solve this, I initiated a project to simplify the configuration process. I proposed and led the development of a new user-friendly interface with guided steps and automated checks, significantly reducing the setup time and minimizing errors. I collaborated closely with the UX team to ensure the interface was intuitive and aligned with customer needs.
-
-Throughout the development process, I maintained regular communication with the customers who had reported issues. I provided them with updates, sought their feedback on prototypes, and incorporated their suggestions into the final design. This not only improved the solution but also made customers feel valued and heard.
-
-Once the new interface was deployed, I continued to monitor customer feedback and system performance. The results were remarkable: customer satisfaction scores increased, the number of support tickets related to the rules engine dropped by 40%, and the time to configure ITSI was reduced by 60%.
-
-By focusing on the customers' needs, actively seeking their input, and delivering a solution that significantly improved their experience, I exemplified Amazon's "Customer Obsession" principle.
 ### Ownership
+Took responsibility for resolving high-priority customer incidents, ensuring minimal downtime and smooth functioning of ITSI environments.
+Led the development and design discussions for the Service Sandbox and Adaptive Thresholding projects, ensuring their timely and successful delivery.
 ### Invent and Simplify
+Implemented drag-and-drop functionality in Service Sandbox, simplifying service topology creation.
+Transitioned the Service Definition preview page from Backbone to React, modernizing the UI and enabling advanced features like outlier detection.
+
 ### Are Right, A Lot
+Diagnosed complex issues like KV store problems and ITSI search head overloads, providing effective solutions that resolved critical customer incidents.
+Led design discussions for Service Sandbox features, ensuring they met customer needs and were implemented with high quality.
+
 ### Learn and Be Curious
+Actively engaged in sprint demos and gathered feedback to improve development efforts and adapt to customer needs.
+Explored and integrated machine learning techniques into ITSI's Adaptive Thresholding project to enhance monitoring capabilities.
+
 ### Hire and Develop the Best
+Worked closely with other senior engineers, leading by example in the design and implementation of critical features.
+
 ### Insist on the Highest Standards
+Delivered high-quality, impactful features such as the drag-and-drop service builder and Adaptive Thresholding, which significantly improved user experience and product adoption.
+Implemented WDIO tests to prevent regression, maintaining high standards in code quality and functionality.
+
 ### Think Big
+Developed the Service Sandbox, a major feature that significantly reduced service decomposition time and improved adoption rates, impacting ITSI’s overall success.
+Led the transformation of key ITSI features, pushing for modernized, user-friendly interfaces and advanced functionality.
+
 ### Bias for Action
+Quickly addressed critical bugs and issues in Service Sandbox and ITSI, ensuring they were resolved before GA.
+Implemented a last-minute feature allowing users to revert published services back into the sandbox, addressing user requests in time for the GA release.
+
 ### Earn Trust
+Consistently delivered on commitments, leading the development of key features and resolving critical customer issues.
+Gained trust by presenting work in sprint demos and incorporating feedback to refine and improve deliverables.
+
 ### Dive Deep
+Investigated complex customer incidents involving ITSI and Puppet automation, identifying root causes and providing effective solutions.
+Led discussions and in-depth technical reviews of new features, ensuring they met technical and user requirements.
 ### Have Backbone; Disagree and Commit
+Took the lead in design discussions, advocating for necessary features like drag-and-drop and Adaptive Thresholding, even when they added complexity to the project.
+
 ### Deliver Results
+Successfully launched major features like the Service Sandbox and Adaptive Thresholding, delivering significant improvements to ITSI’s functionality and user experience.
+Resolved critical customer incidents, ensuring that ITSI environments remained operational and met customer expectations.
+
 ### Success and Scale Bring Broad Responsibility
+Played a key role in launching features that improved ITSI’s scalability and usability, ensuring broader success for Splunk and its customers.
 
 
 # System Design
