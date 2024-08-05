@@ -1,12 +1,22 @@
 # Leadership Principles
 
 ### Customer Obsession
-- Investigated and provided solutions for critical customer incidents such as severe load fluctuations on ITSI Search Head instances and Puppet agent configuration issues.
-- Developed the Service Sandbox and Adaptive Thresholding features to enhance user experience and address key pain points in monitoring and service health visualization.
+- Investigated and provided solutions for critical customer incidents
+  - DTCC case:
+    - Issue: Service templates broke after transferring from QA to Production; QA environment working fine.
+    - Action: Stayed on call multiple times over 2 weeks with support engineer and senior engineers to investigate.
+    - Troubleshooting: Examined logs and discovered the issue stemmed from using unsupported content packs for transfer.
+    - Resolution: Advised the customer to use backup and restore instead to prevent further issues.
+  - Progressive case:
+    - Issue: Extreme lag on environment due to backfilled events after recent upgrade; stack unusable.
+    - Action: Stayed on call for 5+ hours with support engineer, other engineers from different teams to investigate/search for logs for root cause. 
+    - Troubleshooting: Restarted rules engines and the stack multiple times.
+    - Resolution: Ran a script to restart everything, eliminating the backfilled events.
 
 ### Ownership
 - Took responsibility for resolving high-priority customer incidents, ensuring minimal downtime and smooth functioning of ITSI environments.
 - Led the development and design discussions for the Service Sandbox and Adaptive Thresholding projects, ensuring their timely and successful delivery.
+  
 ### Invent and Simplify
 - Implemented drag-and-drop functionality in Service Sandbox, simplifying service topology creation.
 - Transitioned the Service Definition preview page from Backbone to React, modernizing the UI and enabling advanced features like outlier detection.
