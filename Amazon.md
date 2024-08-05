@@ -26,7 +26,11 @@ Realizing that the problem affected other parts of the page, I proactively exten
   - Despite initial estimates of a 2-week timeline, the feature required an additional month to fully develop. Successfully delivered the drag-and-drop functionality, allowing users to create service dependencies visually, which resulted in a patent and a SPOT award for my contribution.
 
 - Backbone to React:
-  - Transitioned the Service Definition preview page from Backbone to React, modernizing the UI and enabling advanced features like outlier detection.
+  - Upgraded the Service Definition preview page from Backbone to React, modernizing the UI and adding advanced features such as outlier detection and better user interactions.
+  - The page was originally built with Backbone JS. The task involved a complete overhaul to React, which required understanding the current implementation and functionality.
+  - Faced challenges in grasping the existing behavior, leading to many questions and thorough investigation to ensure a smooth transition.
+  - Added more caching to improve more performance. 
+  - Successfully completed the migration, which not only improved the page's performance and usability but also enabled further development and enhancements in line with modern framework capabilities.
 
 ### Are Right, A Lot
 - Diagnosed complex issues like KV store problems and ITSI search head overloads, providing effective solutions that resolved critical customer incidents.
