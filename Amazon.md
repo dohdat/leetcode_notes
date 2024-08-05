@@ -62,7 +62,7 @@
 ### Dive Deep
 - Investigated complex customer incidents involving ITSI and Puppet automation, identifying root causes and providing effective solutions.
 - Led discussions and in-depth technical reviews of new features, ensuring they met technical and user requirements.
-- 
+
 ### Have Backbone; Disagree and Commit
 - Took the lead in design discussions, advocating for necessary features like drag-and-drop and Adaptive Thresholding, even when they added complexity to the project.
 
