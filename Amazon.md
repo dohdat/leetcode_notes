@@ -14,9 +14,9 @@
     - Resolution: Ran a script to restart everything, eliminating the backfilled events.
 
 ### Ownership
-I took ownership of a ticket to add a section to the connection page, which I successfully completed. During the process, I noticed that the page became slow and unresponsive when users typed in certain fields, especially if the page was long. Understanding the impact on user experience, I spent 2-3 days investigating and fixing the issue in my section.
+- I took ownership of a ticket to add a section to the connection page, which I successfully completed. During the process, I noticed that the page became slow and unresponsive when users typed in certain fields, especially if the page was long. Understanding the impact on user experience, I spent 2-3 days investigating and fixing the issue in my section.
 
-Realizing that the problem affected other parts of the page, I proactively extended the fix to those areas as well. This caused over 50 WDIO tests to break. After consulting with a senior engineer, I took responsibility for fixing all the tests, despite the challenges of them passing locally but failing in the CI/CD pipeline. I worked through the weekend to resolve these issues, and the senior engineer was very pleased with the final result.
+- Realizing that the problem affected other parts of the page, I proactively extended the fix to those areas as well. This caused over 50 WDIO tests to break. After consulting with a senior engineer, I took responsibility for fixing all the tests, despite the challenges of them passing locally but failing in the CI/CD pipeline. I worked through the weekend to resolve these issues, and the senior engineer was very pleased with the final result.
   
 ### Invent and Simplify
 - Drag and drop
