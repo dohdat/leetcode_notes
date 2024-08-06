@@ -48,7 +48,7 @@
 - This curiosity helped me build a better feature and really pushed me to expand my skills beyond my usual scope.
 
 ### Hire and Develop the Best
-- Worked closely with other senior engineers, leading by example in the design and implementation of critical features.
+- I took the lead in mentoring interns on the ITSI Service Sandbox project, guiding them through the setup of Splunk and ITSI itself. I met with them one-on-one to help with setting up their environments, answering any questions they had, and tackling any roadblocks they faced. These sessions were key in making sure they felt supported and confident, helping them quickly get up to speed with the project. By providing this guidance, I helped the interns contribute more effectively to the team and grow in their roles.
 
 ### Insist on the Highest Standards
 - Delivered high-quality, impactful features such as the drag-and-drop service builder and Adaptive Thresholding, which significantly improved user experience and product adoption.
