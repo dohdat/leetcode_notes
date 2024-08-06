@@ -57,8 +57,9 @@ When I took over the responsibility for improving the connection page in our app
 When I noticed that users were waiting 7-14 days for data to become available in Service Sandbox, I realized we needed a faster solution. I proposed and implemented a backfilling feature that allowed users to populate data up to 7 days in the past instantly. This saved users a significant amount of time and allowed them to start analyzing and testing their services immediately, without the usual delays. By adding this feature, I improved the efficiency of the Sandbox, making it much more user-friendly and effective for quick iterations and testing.
 
 ### Bias for Action
-- Quickly addressed critical bugs and issues in Service Sandbox and ITSI, ensuring they were resolved before GA.
-- Implemented a last-minute feature allowing users to revert published services back into the sandbox, addressing user requests in time for the GA release.
+We needed to enhance the Service Sandbox feature by adding a publish/validation page so users could check for errors before finalizing their services. A key aspect was ensuring that the service trees displayed correctly, with problematic nodes in red and others in light red. During development, we discovered that the page was incorrectly displaying parent nodes, which could prevent users from easily identifying issues.
+
+Instead of delaying the rollout, I quickly identified that the problem was due to a configuration error involving the placement of the parent nodes. I updated the configuration, tested the fix, and deployed it to production. This swift action ensured that users could use the new feature effectively without disruption, maintaining project momentum and enhancing the user experience.
 
 ### Earn Trust
 - Consistently delivered on commitments, leading the development of key features and resolving critical customer issues.
