@@ -73,8 +73,7 @@ In our Service Sandbox project, I proposed adding a service lister on the Servic
 To address their concerns, I designed two versions: one with the service lister and one without. I then conducted usability tests with actual users, demonstrating how the lister made navigation and service management more intuitive. The results showed that users found the service lister helpful and appreciated the added clarity. With this data in hand, I convinced the team to implement the feature, ensuring it was well-integrated and user-friendly.
 
 ### Deliver Results
-- Successfully launched major features like the Service Sandbox and Adaptive Thresholding, delivering significant improvements to ITSI’s functionality and user experience.
-- Resolved critical customer incidents, ensuring that ITSI environments remained operational and met customer expectations.
+When working on the Service Sandbox project, we were getting close to our general availability (GA) launch, but users kept suggesting additional features like adding a service health score and the ability to revert or reset the sandbox. These were valuable ideas, so I pushed to include them despite the tight timeline. I coordinated with the team to quickly design and implement these features, ensuring they were thoroughly tested. By managing the workload efficiently and staying focused, we delivered these enhancements in time for GA, which significantly improved the overall user experience.
 
 ### Success and Scale Bring Broad Responsibility
 - Played a key role in launching features that improved ITSI’s scalability and usability, ensuring broader success for Splunk and its customers.
