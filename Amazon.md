@@ -65,8 +65,7 @@ Instead of delaying the rollout, I quickly identified that the problem was due t
 When reviewing MRs, I took a meticulous approach to verify that each change addressed all potential scenarios and edge cases. I worked closely with the engineers to discuss and understand their solutions, providing detailed feedback and suggesting improvements when necessary. This thorough review process not only ensured high-quality code but also demonstrated my commitment to the team's success and fostered trust in the quality and reliability of our shared work.
 
 ### Dive Deep
-- Investigated complex customer incidents involving ITSI and Puppet automation, identifying root causes and providing effective solutions.
-- Led discussions and in-depth technical reviews of new features, ensuring they met technical and user requirements.
+In the ITSI Service Sandbox project, I faced the challenge of rendering service trees that could contain up to 250 services. Full rendering was causing performance issues, so I dove deep into the data to find a solution. I analyzed how the service trees were being processed and realized that by implementing partial rendering, we could optimize the performance without sacrificing functionality. I fine-tuned the rendering logic to load only the visible parts of the tree first, allowing for smoother navigation and a better user experience. This deep dive into the rendering process significantly improved the system's responsiveness, making it more scalable for complex service structures.
 
 ### Have Backbone; Disagree and Commit
 - Took the lead in design discussions, advocating for necessary features like drag-and-drop and Adaptive Thresholding, even when they added complexity to the project.
