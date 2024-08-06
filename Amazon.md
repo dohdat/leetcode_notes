@@ -73,7 +73,11 @@ In our Service Sandbox project, I proposed adding a service lister on the Servic
 To address their concerns, I designed two versions: one with the service lister and one without. I then conducted usability tests with actual users, demonstrating how the lister made navigation and service management more intuitive. The results showed that users found the service lister helpful and appreciated the added clarity. With this data in hand, I convinced the team to implement the feature, ensuring it was well-integrated and user-friendly.
 
 ### Deliver Results
-When working on the Service Sandbox project, we were getting close to our general availability (GA) launch, but users kept suggesting additional features like adding a service health score and the ability to revert or reset the sandbox. These were valuable ideas, so I pushed to include them despite the tight timeline. I coordinated with the team to quickly design and implement these features, ensuring they were thoroughly tested. By managing the workload efficiently and staying focused, we delivered these enhancements in time for GA, which significantly improved the overall user experience.
+We were nearing the General Availability (GA) release of the Service Sandbox, but as we gathered feedback from users, several additional feature requests emerged. Users wanted the ability to view service health scores within the sandbox, and many requested an option to revert or reset the sandbox environment easily.
+
+These new suggestions were critical because they addressed real user needs and would greatly enhance the overall usability of the platform. Despite the tight timeline, I prioritized these features, working closely with the team to quickly design and implement them. We conducted rigorous testing to ensure that these additions didn't introduce new issues and that they integrated seamlessly with the existing functionality.
+
+By focusing on delivering these key features before the GA release, we not only met our deadlines but also launched a product that was more aligned with user expectations, ultimately leading to greater customer satisfaction and adoption.
 
 ### Success and Scale Bring Broad Responsibility
 - Played a key role in launching features that improved ITSI’s scalability and usability, ensuring broader success for Splunk and its customers.
