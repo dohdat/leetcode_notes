@@ -295,3 +295,94 @@ Transaction.returnBook(member, book1);
 console.log(member.borrowedBooks); // [Book { id: 2, title: 'To Kill a Mockingbird', author: 'Harper Lee', available: false }]
 ```
 
+## Design Online Stock Brokerage System
+
+```javascript
+// Class Definitions
+class User {
+    constructor(userId, name, email) {
+        this.userId = userId;
+        this.name = name;
+        this.email = email;
+        this.accounts = [];
+    }
+
+    addAccount(account) {
+        this.accounts.push(account);
+    }
+}
+
+class Account {
+    constructor(accountId, userId, balance) {
+        this.accountId = accountId;
+        this.userId = userId;
+        this.balance = balance;
+        this.holdings = {};
+    }
+
+    addHolding(stock, quantity) {
+        this.holdings[stock.ticker] = (this.holdings[stock.ticker] || 0) + quantity;
+    }
+
+    updateBalance(amount) {
+        this.balance += amount;
+    }
+}
+
+class Stock {
+    constructor(ticker, price) {
+        this.ticker = ticker;
+        this.price = price;
+    }
+
+    updatePrice(newPrice) {
+        this.price = newPrice;
+    }
+}
+
+class Order {
+    constructor(orderId, userId, stock, quantity, price, type) {
+        this.orderId = orderId;
+        this.userId = userId;
+        this.stock = stock;
+        this.quantity = quantity;
+        this.price = price;
+        this.type = type; // 'Buy' or 'Sell'
+        this.status = 'Pending';
+    }
+
+    executeOrder(account) {
+        if (this.type === 'Buy') {
+            if (account.balance >= this.quantity * this.price) {
+                account.updateBalance(-this.quantity * this.price);
+                account.addHolding(this.stock, this.quantity);
+                this.status = 'Executed';
+            } else {
+                this.status = 'Failed - Insufficient Funds';
+            }
+        } else if (this.type === 'Sell') {
+            if (account.holdings[this.stock.ticker] >= this.quantity) {
+                account.updateBalance(this.quantity * this.price);
+                account.addHolding(this.stock, -this.quantity);
+                this.status = 'Executed';
+            } else {
+                this.status = 'Failed - Insufficient Holdings';
+            }
+        }
+    }
+}
+
+// Example Usage
+const user = new User(1, 'Alice', 'alice@example.com');
+const account = new Account(101, 1, 10000);
+const stock = new Stock('AAPL', 150);
+user.addAccount(account);
+
+const order1 = new Order(1, 1, stock, 10, 150, 'Buy');
+order1.executeOrder(account);
+
+console.log(`Order Status: ${order1.status}`);
+console.log(`Account Balance: $${account.balance}`);
+console.log(`Account Holdings: `, account.holdings);
+```
+
