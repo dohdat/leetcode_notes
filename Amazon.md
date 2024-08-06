@@ -217,3 +217,81 @@ Instead of pushing forward with socket.io, I decided to implement a locking mech
 
 
 
+
+# OOD questions
+## Library Management System
+
+```javascript
+// Book Class
+class Book {
+    constructor(id, title, author, available = true) {
+        this.id = id;
+        this.title = title;
+        this.author = author;
+        this.available = available;
+    }
+    checkOut() { this.available = !this.available; return !this.available; }
+    returnBook() { this.available = true; }
+}
+
+// Member Class
+class Member {
+    constructor(id, name) {
+        this.id = id;
+        this.name = name;
+        this.borrowedBooks = [];
+    }
+    borrowBook(book) {
+        if (book.checkOut()) {
+            this.borrowedBooks.push(book);
+            return true;
+        }
+        return false;
+    }
+    returnBook(book) {
+        book.returnBook();
+        this.borrowedBooks = this.borrowedBooks.filter(b => b.id !== book.id);
+    }
+}
+
+// Library Class
+class Library {
+    constructor() {
+        this.books = [];
+        this.members = [];
+    }
+    addBook(book) { this.books.push(book); }
+    removeBook(bookId) { this.books = this.books.filter(b => b.id !== bookId); }
+    addMember(member) { this.members.push(member); }
+    findBookById(bookId) { return this.books.find(b => b.id === bookId); }
+    findMemberById(memberId) { return this.members.find(m => m.id === memberId); }
+}
+
+// Transaction Class
+class Transaction {
+    static checkOutBook(member, book) {
+        return member.borrowBook(book);
+    }
+    static returnBook(member, book) {
+        member.returnBook(book);
+    }
+}
+
+// Example Usage
+const library = new Library();
+const book1 = new Book(1, '1984', 'George Orwell');
+const book2 = new Book(2, 'To Kill a Mockingbird', 'Harper Lee');
+library.addBook(book1);
+library.addBook(book2);
+
+const member = new Member(1, 'John Doe');
+library.addMember(member);
+
+console.log(Transaction.checkOutBook(member, book1)); // true
+console.log(member.borrowedBooks); // [Book { id: 1, title: '1984', author: 'George Orwell', available: false }]
+console.log(Transaction.checkOutBook(member, book2)); // true
+
+Transaction.returnBook(member, book1);
+console.log(member.borrowedBooks); // [Book { id: 2, title: 'To Kill a Mockingbird', author: 'Harper Lee', available: false }]
+```
+
