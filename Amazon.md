@@ -54,8 +54,7 @@
 When I took over the responsibility for improving the connection page in our application, I noticed that our WDIO tests were failing frequently, making it hard to trust the automated testing process. The connection page had become slow and unresponsive, leading to over 50 test failures. Some suggested ignoring the tests since they were flaky, but that didn’t sit well with me—I knew we needed reliable tests to maintain quality. I spent a weekend digging into the test failures, consulting with senior engineers to identify the root causes. By the end, I not only fixed the connection page but also made the WDIO tests more stable and reliable. As a result, our test suite now accurately reflects the system’s performance, ensuring we can confidently roll out updates without compromising on quality.
 
 ### Think Big
-- Developed the Service Sandbox, a major feature that significantly reduced service decomposition time and improved adoption rates, impacting ITSI’s overall success.
-- Led the transformation of key ITSI features, pushing for modernized, user-friendly interfaces and advanced functionality.
+When I noticed that users were waiting 7-14 days for data to become available in Service Sandbox, I realized we needed a faster solution. I proposed and implemented a backfilling feature that allowed users to populate data up to 7 days in the past instantly. This saved users a significant amount of time and allowed them to start analyzing and testing their services immediately, without the usual delays. By adding this feature, I improved the efficiency of the Sandbox, making it much more user-friendly and effective for quick iterations and testing.
 
 ### Bias for Action
 - Quickly addressed critical bugs and issues in Service Sandbox and ITSI, ensuring they were resolved before GA.
