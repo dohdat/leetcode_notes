@@ -62,8 +62,7 @@ We needed to enhance the Service Sandbox feature by adding a publish/validation 
 Instead of delaying the rollout, I quickly identified that the problem was due to a configuration error involving the placement of the parent nodes. I updated the configuration, tested the fix, and deployed it to production. This swift action ensured that users could use the new feature effectively without disruption, maintaining project momentum and enhancing the user experience.
 
 ### Earn Trust
-- Consistently delivered on commitments, leading the development of key features and resolving critical customer issues.
-- Gained trust by presenting work in sprint demos and incorporating feedback to refine and improve deliverables.
+When reviewing MRs, I took a meticulous approach to verify that each change addressed all potential scenarios and edge cases. I worked closely with the engineers to discuss and understand their solutions, providing detailed feedback and suggesting improvements when necessary. This thorough review process not only ensured high-quality code but also demonstrated my commitment to the team's success and fostered trust in the quality and reliability of our shared work.
 
 ### Dive Deep
 - Investigated complex customer incidents involving ITSI and Puppet automation, identifying root causes and providing effective solutions.
