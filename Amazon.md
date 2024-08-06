@@ -80,7 +80,9 @@ These new suggestions were critical because they addressed real user needs and w
 By focusing on delivering these key features before the GA release, we not only met our deadlines but also launched a product that was more aligned with user expectations, ultimately leading to greater customer satisfaction and adoption.
 
 ### Success and Scale Bring Broad Responsibility
-- Played a key role in launching features that improved ITSI’s scalability and usability, ensuring broader success for Splunk and its customers.
+I was working on improving real-time features for our Service Sandbox platform and proposed integrating socket.io to handle concurrent users more effectively. However, I quickly realized that our codebase wasn’t equipped to support this integration, and it hadn’t been tested extensively. Additionally, the number of users facing concurrency issues was relatively small, making it a tough sell for immediate implementation.
+
+Instead of pushing forward with socket.io, I decided to implement a locking mechanism to manage concurrent access more reliably. This approach was more compatible with our existing infrastructure and addressed the immediate needs without requiring extensive changes. I also collected user feedback to ensure we prioritized the most pressing concerns. To avoid similar issues in the future, I now conduct thorough feasibility assessments before suggesting major changes, ensuring they align with both our technical capabilities and user needs.
 
 
 # System Design
