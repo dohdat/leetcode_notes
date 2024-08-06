@@ -68,7 +68,9 @@ When reviewing MRs, I took a meticulous approach to verify that each change addr
 In the ITSI Service Sandbox project, I faced the challenge of rendering service trees that could contain up to 250 services. Full rendering was causing performance issues, so I dove deep into the data to find a solution. I analyzed how the service trees were being processed and realized that by implementing partial rendering, we could optimize the performance without sacrificing functionality. I fine-tuned the rendering logic to load only the visible parts of the tree first, allowing for smoother navigation and a better user experience. This deep dive into the rendering process significantly improved the system's responsiveness, making it more scalable for complex service structures.
 
 ### Have Backbone; Disagree and Commit
-- Took the lead in design discussions, advocating for necessary features like drag-and-drop and Adaptive Thresholding, even when they added complexity to the project.
+In our Service Sandbox project, I proposed adding a service lister on the Service pages to clearly indicate which services were created using the sandbox. This would help users differentiate between sandbox and production services at a glance. Initially, the team was hesitant, thinking it might clutter the interface and confuse users. I understood their concerns but believed this feature would add significant value by making it easier to manage and identify services.
+
+To address their concerns, I designed two versions: one with the service lister and one without. I then conducted usability tests with actual users, demonstrating how the lister made navigation and service management more intuitive. The results showed that users found the service lister helpful and appreciated the added clarity. With this data in hand, I convinced the team to implement the feature, ensuring it was well-integrated and user-friendly.
 
 ### Deliver Results
 - Successfully launched major features like the Service Sandbox and Adaptive Thresholding, delivering significant improvements to ITSI’s functionality and user experience.
