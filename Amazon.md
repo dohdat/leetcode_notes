@@ -206,17 +206,27 @@ Problem Statement: Design a rate limiter to control the number of requests a cli
 Requirements:
 
 Types of Rate Limiting: Fixed window, sliding window, token bucket, or leaky bucket.
+
 Granularity: Rate limiting per IP, user, API key, or globally.
+
 Timeframe: Requests allowed per second, minute, hour, or day.
+
 Actions on Limit Exceeding: Block, throttle, or delay requests.
+
 Scalability: Should handle increasing loads across distributed systems.
+
 Persistence: Should rate limits reset periodically or persist across time?
+
 Performance: Should have minimal impact on the overall system latency.
+
 Clarifying Questions:
 
 What is the expected traffic load?
+
 Should it be implemented at the API gateway level or within specific microservices?
+
 Is it acceptable to have a small margin of error in request counting?
+
 What type of storage system will be used (e.g., Redis, in-memory, database)?
 
 ### 2 - Propose high-level design and get buy-in: 10 - 15 minutes
