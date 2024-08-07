@@ -230,9 +230,11 @@ Is it acceptable to have a small margin of error in request counting?
 What type of storage system will be used (e.g., Redis, in-memory, database)?
 
 ### 2 - Propose high-level design and get buy-in: 10 - 15 minutes
+
 **Functional Requirements:**
 1. Limit the number of requests an entity can send to an API within a time window, e.g., 15 requests per second.
 2. The APIs are accessible through a cluster, so the rate limit should be considered across different servers. The user should get an error message whenever the defined threshold is crossed within a single server or across a combination of servers.
+   
 **Non-Functional Requirements:**
 1. The system should be highly available. The rate limiter should always work since it protects our service from external attacks.
 2. Our rate limiter should not introduce substantial latencies affecting the user experience.
