@@ -254,7 +254,9 @@ If the current time is outside the window, reset the counter and timestamp.
 Trade-offs:
 
 Pros: Simple to implement, lightweight.
+
 Cons: Can cause burst traffic at the boundary of windows, leading to potential overloading.
+
 Use Case: Suitable for scenarios with low to moderate traffic where strict request control isn't critical.
 
 #### 2. Sliding Window Log Algorithm
@@ -272,7 +274,9 @@ Otherwise, add the current timestamp to the list and proceed.
 Trade-offs:
 
 Pros: Smooths out the traffic, no burst at window boundaries.
+
 Cons: Higher memory usage due to storing all timestamps; more complex due to dynamic checking.
+
 Use Case: Suitable for environments where request patterns are bursty and require more even distribution over time.
 
 #### 3. Sliding Window Counter Algorithm
@@ -290,7 +294,9 @@ Update the current segment's counter.
 Trade-offs:
 
 Pros: Provides more accurate rate limiting compared to fixed window.
+
 Cons: Requires maintaining multiple counters; may need adjustments for different time granularities.
+
 Use Case: Useful for scenarios where a more accurate distribution of requests over time is needed, balancing between fixed and sliding windows.
 
 #### 4. Token Bucket Algorithm
@@ -308,7 +314,9 @@ If not, block or queue the request.
 Trade-offs:
 
 Pros: Can handle burst traffic; maintains steady request flow.
+
 Cons: Slightly more complex to implement; needs careful configuration of token refill rate and bucket size.
+
 Use Case: Ideal for APIs that need to handle bursty traffic followed by steady processing.
 
 #### 5. Leaky Bucket Algorithm
@@ -329,20 +337,25 @@ Cons: May introduce latency for legitimate requests during high traffic; require
 Use Case: Best for systems where consistent processing rates are critical, and the system can’t handle bursty loads.
 
 Data Storage Considerations
-In-Memory Storage (e.g., Redis):
+**In-Memory Storage (e.g., Redis):**
 
 Pros: Fast access, supports TTL (Time to Live) for automatic counter resets, good for distributed systems.
+
 Cons: Requires additional infrastructure, potential issues with data consistency across distributed instances.
-Local Cache:
+
+**Local Cache:**
 
 Pros: Simpler to implement for single-instance applications, lower latency.
+
 Cons: Not suitable for distributed environments; limits scalability.
 Scalability and Consistency
-Sharding:
+
+**Sharding:**
 
 Distribute clients across multiple nodes or shards to balance the load.
 Use consistent hashing to ensure that each client's rate limit is managed by a specific shard.
-Consistency Models:
+
+**Consistency Models:**
 
 Eventual Consistency: Accepts some delay in propagating the rate limit status across distributed systems, trading off consistency for performance.
 Strong Consistency: Ensures that rate limits are uniformly enforced across all nodes, but may introduce latency.
