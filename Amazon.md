@@ -371,6 +371,11 @@ If the rate-limiting system is down, allow requests to go through but monitor th
   
 ### 4 -  Wrap: 3 - 5 minutes
 
+IP-Based Throttling: Controls requests per IP, but can cause issues in shared environments (e.g., internet cafes) and is vulnerable to memory exhaustion from IPv6 address spoofing.
+
+Token-Based Throttling: Limits API requests after user authentication, but can be problematic for login APIs, where incorrect attempts could lock out legitimate users.
+
+Hybrid Approach: Combines both IP and user-based rate limiting to mitigate individual weaknesses, though it increases memory and storage requirements.
 
 
 
