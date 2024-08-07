@@ -201,16 +201,159 @@ Instead of pushing forward with socket.io, I decided to implement a locking mech
 
 ## Design a Rate Limiter
 ### 1 - Understand the problem and establish design scope: 3 - 10 minutes
+Problem Statement: Design a rate limiter to control the number of requests a client can make to a service within a specific time frame.
 
+Requirements:
 
+Types of Rate Limiting: Fixed window, sliding window, token bucket, or leaky bucket.
+Granularity: Rate limiting per IP, user, API key, or globally.
+Timeframe: Requests allowed per second, minute, hour, or day.
+Actions on Limit Exceeding: Block, throttle, or delay requests.
+Scalability: Should handle increasing loads across distributed systems.
+Persistence: Should rate limits reset periodically or persist across time?
+Performance: Should have minimal impact on the overall system latency.
+Clarifying Questions:
 
+What is the expected traffic load?
+Should it be implemented at the API gateway level or within specific microservices?
+Is it acceptable to have a small margin of error in request counting?
+What type of storage system will be used (e.g., Redis, in-memory, database)?
 
 ### 2 - Propose high-level design and get buy-in: 10 - 15 minutes
+**Functional Requirements:**
+1. Limit the number of requests an entity can send to an API within a time window, e.g., 15 requests per second.
+2. The APIs are accessible through a cluster, so the rate limit should be considered across different servers. The user should get an error message whenever the defined threshold is crossed within a single server or across a combination of servers.
+**Non-Functional Requirements:**
+1. The system should be highly available. The rate limiter should always work since it protects our service from external attacks.
+2. Our rate limiter should not introduce substantial latencies affecting the user experience.
 
+Rate Limiting is a process that is used to define the rate and speed at which consumers can access APIs. Throttling is the process of controlling the usage of the APIs by customers during a given period. Throttling can be defined at the application level and/or API level. **When a throttle limit is crossed, the server returns HTTP status “429 - Too many requests".**
+
+Here are the three famous throttling types that are used by different services: 
+**Hard Throttling:** The number of API requests cannot exceed the throttle limit.
+**Soft Throttling:** In this type, we can set the API request limit to exceed a certain percentage. For example, if we have rate-limit of 100 messages a minute and 10% exceed-limit, our rate limiter will allow up to 110 messages per minute.
+**Elastic or Dynamic Throttling:** Under Elastic throttling, the number of requests can go beyond the threshold if the system has some resources available. For example, if a user is allowed only 100 messages a minute, we can let the user send more than 100 messages a minute when there are free resources available in the system.
 
 
 ### 3 - Design deep dive: 10 - 25 minutes
 
+![Screenshot 2024-08-06 at 10 28 44 PM](https://github.com/user-attachments/assets/54ae22fc-bee1-4580-b5f6-57763391ddce)
+
+#### 1. Fixed Window Algorithm
+Overview:
+
+The fixed window algorithm divides time into fixed intervals (e.g., every minute) and counts the number of requests within each interval. If the number of requests exceeds the allowed limit within a window, subsequent requests are blocked until the next window starts.
+Implementation:
+
+For each client (IP, user, API key), maintain a counter and a timestamp of the current window.
+When a request arrives:
+Check if the current time is within the same window.
+If yes, increment the counter.
+If the counter exceeds the limit, block the request.
+If the current time is outside the window, reset the counter and timestamp.
+Trade-offs:
+
+Pros: Simple to implement, lightweight.
+Cons: Can cause burst traffic at the boundary of windows, leading to potential overloading.
+Use Case: Suitable for scenarios with low to moderate traffic where strict request control isn't critical.
+
+#### 2. Sliding Window Log Algorithm
+Overview:
+
+The sliding window log algorithm maintains a log of all incoming requests and only considers those within a specific sliding window (e.g., last 60 seconds) to determine the rate.
+Implementation:
+
+For each client, maintain a list (or queue) of timestamps for each request.
+When a request arrives:
+Remove timestamps that are outside the sliding window.
+Check the size of the remaining list.
+If the size exceeds the limit, block the request.
+Otherwise, add the current timestamp to the list and proceed.
+Trade-offs:
+
+Pros: Smooths out the traffic, no burst at window boundaries.
+Cons: Higher memory usage due to storing all timestamps; more complex due to dynamic checking.
+Use Case: Suitable for environments where request patterns are bursty and require more even distribution over time.
+
+#### 3. Sliding Window Counter Algorithm
+Overview:
+
+A variation of the sliding window approach, this algorithm divides time into multiple smaller segments within the sliding window (e.g., 10 seconds in a 60-second window). It keeps track of request counts in each segment, allowing more granular control over the rate.
+Implementation:
+
+For each client, maintain counters for each time segment within the sliding window.
+When a request arrives:
+Determine which segment the current time falls into.
+Add up the counts of the segments that fall within the sliding window.
+If the sum exceeds the limit, block the request.
+Update the current segment's counter.
+Trade-offs:
+
+Pros: Provides more accurate rate limiting compared to fixed window.
+Cons: Requires maintaining multiple counters; may need adjustments for different time granularities.
+Use Case: Useful for scenarios where a more accurate distribution of requests over time is needed, balancing between fixed and sliding windows.
+
+#### 4. Token Bucket Algorithm
+Overview:
+
+The token bucket algorithm controls the flow of requests by using tokens. A bucket holds tokens, and each incoming request consumes a token. Tokens are replenished at a steady rate. If the bucket is empty, requests are either throttled or blocked.
+Implementation:
+
+For each client, maintain a counter for tokens and a timestamp for the last refill.
+When a request arrives:
+Calculate the number of tokens to add based on the time elapsed since the last refill.
+Add tokens to the bucket, ensuring it doesn’t exceed the bucket capacity.
+If there are enough tokens, proceed with the request and decrement the token count.
+If not, block or queue the request.
+Trade-offs:
+
+Pros: Can handle burst traffic; maintains steady request flow.
+Cons: Slightly more complex to implement; needs careful configuration of token refill rate and bucket size.
+Use Case: Ideal for APIs that need to handle bursty traffic followed by steady processing.
+
+#### 5. Leaky Bucket Algorithm
+Overview:
+
+The leaky bucket algorithm is similar to token bucket but with a twist: it processes requests at a constant rate. The bucket leaks tokens at a steady rate, and any excess requests are queued. If the queue is full, new requests are dropped.
+Implementation:
+
+For each client, maintain a queue for incoming requests.
+When a request arrives:
+If the bucket has space, add the request to the queue.
+The queue processes requests at a fixed rate, "leaking" them out of the system.
+If the queue is full, drop or reject new requests.
+Trade-offs:
+
+Pros: Smooths out burst traffic; consistent processing rate.
+Cons: May introduce latency for legitimate requests during high traffic; requires careful management of queue size.
+Use Case: Best for systems where consistent processing rates are critical, and the system can’t handle bursty loads.
+
+Data Storage Considerations
+In-Memory Storage (e.g., Redis):
+
+Pros: Fast access, supports TTL (Time to Live) for automatic counter resets, good for distributed systems.
+Cons: Requires additional infrastructure, potential issues with data consistency across distributed instances.
+Local Cache:
+
+Pros: Simpler to implement for single-instance applications, lower latency.
+Cons: Not suitable for distributed environments; limits scalability.
+Scalability and Consistency
+Sharding:
+
+Distribute clients across multiple nodes or shards to balance the load.
+Use consistent hashing to ensure that each client's rate limit is managed by a specific shard.
+Consistency Models:
+
+Eventual Consistency: Accepts some delay in propagating the rate limit status across distributed systems, trading off consistency for performance.
+Strong Consistency: Ensures that rate limits are uniformly enforced across all nodes, but may introduce latency.
+Failover and Fault Tolerance
+Redundancy:
+
+Use replica nodes or clusters to ensure availability even if one node fails.
+Implement fallback mechanisms if the primary rate-limiting store is unavailable.
+Graceful Degradation:
+
+If the rate-limiting system is down, allow requests to go through but monitor the rate closely to avoid overwhelming the service.
 
   
 ### 4 -  Wrap: 3 - 5 minutes
