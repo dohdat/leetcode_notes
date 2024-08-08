@@ -1,3 +1,43 @@
+
+# Introduce
+**Q) Tell me about yourself.**
+I graduated from San Jose State University with a degree in Software Engineering in 2020. Since 2022, I've been working at Splunk as a front-end software engineer. I also help with backend tasks when needed. I was recently promoted and worked on a project called Service Sandbox, which received positive feedback from customers and has gone GA (General Availability). For this project, I received a SPOT award and a patent. 
+
+Before joining Splunk, I worked at a startup called Future Motion as a full-stack engineer. There, I worked on their CMS system to manage returns and shipping in-house.
+
+**Q) Why are you interested in working at Amazon?**
+
+I use Amazon frequently for ordering items. I am always interested in how Amazon can solve problems at such a large scale. I appreciate Amazon’s focus on customer satisfaction, which aligns with my own values. Working with such talented and diverse team at Amazon would help me grow as a software engineer.
+
+**Q) Why are you looking to leave Splunk?**
+
+Splunk is an awesome company with a great culture. However, it was recently acquired by Cisco, which introduced some uncertainty to upcoming projects. I am looking for new opportunities that offer more stability and clear direction.
+
+### OOD Questions
+Can you walk me through a sample use case or workflow?
+
+Are there any edge cases or exceptions we need to handle?
+
+How should the system handle errors or failures within these use cases?
+
+### Questions to ask interviewer
+
+What does a typical day look like in this role?
+
+What is your stack? What is the rationale for/story behind this specific stack?
+
+How does the engineering team balance resources between feature requests and engineering maintenance?
+
+What do you like about working here?
+
+What is the current team composition like?
+
+What is the on-call schedule like?
+
+What is unique about working at this company that you have not experienced elsewhere?
+
+
+
 # Leadership Principles
 
 ### Customer Obsession
