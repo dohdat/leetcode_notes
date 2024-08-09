@@ -429,7 +429,44 @@ Token-Based Throttling: Limits API requests after user authentication, but can b
 
 Hybrid Approach: Combines both IP and user-based rate limiting to mitigate individual weaknesses, though it increases memory and storage requirements.
 
+## Design a Ticket Master
+### Requirements
+Functional requirements:
+- Ticket search and purchase
+- User registration and authentication
+- Payment processing
 
+Non-functional requirements:
+- High availability and scalability
+- Search and booking
+- Data consistency and reliability
+
+### Core Entities/Tables
+- User
+  - Attributes: userID, name, email, password.
+- Event
+  - Attributes: eventID, name, description, dateTime, location
+- Ticket
+  - Attributes: ticketID, eventID, userID
+
+### API
+GET /event/eventId
+GET /search?term={term}&location={location}&type={type}&date={date}
+
+POST /booking/reserve
+```
+{
+  "userID": "1234",
+  "eventID": "5678",
+  "tickets": [
+    {"seatNumber": "A1", "price": 200},
+    {"seatNumber": "A2", "price": 200}
+  ]
+}
+```
+### High-Level Design
+
+### Deep Dives
 
 # OOD questions
 ## Library Management System
@@ -598,4 +635,32 @@ console.log(`Order Status: ${order1.status}`);
 console.log(`Account Balance: $${account.balance}`);
 console.log(`Account Holdings: `, account.holdings);
 ```
+
+### SQL vs NoSQL
+**SQL (Relational Databases)**
+Pros:
+
+Structured Data: Well-suited for structured data with defined relationships.
+ACID Compliance: Ensures transactions are reliable and consistent.
+Complex Queries: Supports complex joins and queries with SQL.
+Standardization: Widely adopted, with established tools and support.
+
+Cons:
+
+Scalability: Vertical scaling can be costly; horizontal scaling is challenging.
+Flexibility: Schema rigidity requires predefined structure and may need alterations for changes.
+Performance: Can be slower with large volumes of data due to complex joins.
+
+**NoSQL (Non-Relational Databases)**
+Pros:
+
+Scalability: Designed for horizontal scaling, making it ideal for large-scale, distributed systems.
+Flexibility: Schema-less design allows for dynamic changes and diverse data types.
+Performance: Optimized for high-speed reads/writes, especially with large datasets.
+
+Cons:
+
+Complex Queries: Limited support for complex querying and joins.
+Consistency: Often sacrifices consistency for scalability and performance (CAP theorem).
+Maturity: Less standardized, with varied tools and practices across different databases.
 
