@@ -465,6 +465,8 @@ POST /booking/reserve
 }
 ```
 ### High-Level Design
+![image](https://github.com/user-attachments/assets/6825ffc9-9041-47bc-8ee3-d89704507e37)
+
 
 ### Deep Dives
 
