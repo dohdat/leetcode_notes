@@ -468,7 +468,14 @@ POST /booking/reserve
 ![image](https://github.com/user-attachments/assets/6825ffc9-9041-47bc-8ee3-d89704507e37)
 
 
+
+
 ### Deep Dives
+
+### Common System Design Diagram
+
+![image](https://github.com/user-attachments/assets/4da609f0-e976-4c74-a7e3-115a341c55c2)
+
 
 # OOD questions
 ## Library Management System
